@@ -16,7 +16,7 @@ class Encoder(tf.keras.Model):
             dtype=tf.float32)
         x = inputs
         x = tf.keras.layers.Bidirectional(
-            tf.keras.layers.LSTM(300, return_sequences=True)
+            tf.keras.layers.LSTM(embedding_size, return_sequences=True)
         )(x)
 
         self.model = tf.keras.Model(inputs=inputs, outputs=x)

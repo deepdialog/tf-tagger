@@ -1,1 +1,1 @@
-python3 -m tf_tagger.test
+python3 -m tf_tagger.test.simple
