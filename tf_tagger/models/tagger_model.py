@@ -32,7 +32,8 @@ class TaggerModel(tf.keras.Model):
         )
 
     @tf.function
-    def call(self, inputs, lengths):
+    def call(self, inputs):
+        lengths = tf.reduce_sum(tf.cast(tf.math.greater(inputs, 0), tf.int32), axis=-1)
         m = self.emb(inputs)
         m = self.en(m)
         m = self.project(m)
@@ -40,7 +41,8 @@ class TaggerModel(tf.keras.Model):
         return m
 
     @tf.function
-    def compute_loss(self, inputs, lengths, tags):
+    def compute_loss(self, inputs, tags):
+        lengths = tf.reduce_sum(tf.cast(tf.math.greater(inputs, 0), tf.int32), axis=-1)
         m = self.emb(inputs)
         m = self.en(m)
         m = self.project(m)

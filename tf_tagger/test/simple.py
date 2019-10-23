@@ -2,6 +2,7 @@ import os
 import pickle
 
 from ..tf_tagger import TFTagger
+from ..utils.extract_entities import extract_entities
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
@@ -16,7 +17,11 @@ def test():
          ['Bdate', 'Idate', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']]
 
     it.fit(x, y)
-    print(it.predict(x))
+    pred = it.predict(x)
+    print(pred)
+    for i in range(len(x)):
+        print(f'sentence: {x[i]}')
+        print(extract_entities(pred[i], x[i]))
     with open('/tmp/test.model', 'wb') as fp:
         pickle.dump(it, fp)
     with open('/tmp/test.model', 'rb') as fp:
