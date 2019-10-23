@@ -47,7 +47,7 @@ class TFTagger:
 
         total_batch = int(np.ceil(len(X_vec) / self.batch_size))
         for i_epoch in range(self.epoch):
-            pbar = tqdm(range(total_batch), ncols=10)
+            pbar = tqdm(range(total_batch), ncols=100)
             pbar.set_description(f'epoch: {i_epoch} loss: /')
             for i in pbar:
                 i_min = i * self.batch_size
