@@ -13,13 +13,14 @@ class Decoder(tf.keras.Model):
         super(Decoder, self).__init__(self)
         self.tag_size = tag_size
         w_init = tf.random_normal_initializer()
+        # w_init = tf.constant_initializer(0.0)
         self.transition_params = tf.Variable(
             initial_value=w_init(
                 shape=(tag_size, tag_size),
-                dtype=tf.dtypes.float32)
+                dtype=tf.dtypes.float32),
+            name='crf/transition_params'
         )
 
-    @tf.function
     def call(self, inputs, lengths):
         """
         parameters:
@@ -31,7 +32,6 @@ class Decoder(tf.keras.Model):
             inputs, self.transition_params, lengths)
         return tags_id
 
-    @tf.function
     def compute_loss(self, inputs, lengths, tags):
         """
         parameters:

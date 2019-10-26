@@ -18,7 +18,8 @@ class Embed(tf.keras.Model):
         ))
         self.model = model
 
-    @tf.function
     def call(self, inputs):
-        return self.model(inputs)
+        x = inputs
+        x = self.model(inputs)
+        return x
 

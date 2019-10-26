@@ -206,6 +206,7 @@ DOUBLESLASHEQUAL	../env/lib/python3.7/token.py	/^DOUBLESLASHEQUAL = 48$/;"	kind:
 DOUBLESTAR	../env/lib/python3.7/token.py	/^DOUBLESTAR = 35$/;"	kind:variable	line:48
 DOUBLESTAREQUAL	../env/lib/python3.7/token.py	/^DOUBLESTAREQUAL = 46$/;"	kind:variable	line:59
 Decnumber	../env/lib/python3.7/tokenize.py	/^Decnumber = r'(?:0(?:_?0)*|[1-9](?:_?[0-9])*)'$/;"	kind:variable	line:121
+Decoder	../tf_tagger/models/decoder.py	/^class Decoder(tf.keras.Model):$/;"	kind:class	line:10
 Double	../env/lib/python3.7/tokenize.py	/^Double = r'[^"\\\\]*(?:\\\\.[^"\\\\]*)*"'$/;"	kind:variable	line:157
 Double3	../env/lib/python3.7/tokenize.py	/^Double3 = r'[^"\\\\]*(?:(?:\\\\.|"(?!""))[^"\\\\]*)*"""'$/;"	kind:variable	line:161
 DynamicClassAttribute	../env/lib/python3.7/types.py	/^class DynamicClassAttribute:$/;"	kind:class	line:142
@@ -222,8 +223,10 @@ ERRORTOKEN	../env/lib/python3.7/token.py	/^ERRORTOKEN = 54$/;"	kind:variable	lin
 ESCAPES	../env/lib/python3.7/sre_parse.py	/^ESCAPES = {$/;"	kind:variable	line:31
 EXACT_TOKEN_TYPES	../env/lib/python3.7/tokenize.py	/^EXACT_TOKEN_TYPES = {$/;"	kind:variable	line:45
 EXTENSION_SUFFIXES	../env/lib/python3.7/importlib/_bootstrap_external.py	/^EXTENSION_SUFFIXES = []$/;"	kind:variable	line:1018
+Embed	../tf_tagger/models/embed.py	/^class Embed(tf.keras.Model):$/;"	kind:class	line:10
 EmptyHeaderError	../env/lib/python3.7/tarfile.py	/^class EmptyHeaderError(HeaderError):$/;"	kind:class	line:291
 EncodedFile	../env/lib/python3.7/codecs.py	/^def EncodedFile(file, data_encoding, file_encoding=None, errors='strict'):$/;"	kind:function	line:907
+Encoder	../tf_tagger/models/encoder.py	/^class Encoder(tf.keras.Model):$/;"	kind:class	line:10
 Enum	../env/lib/python3.7/enum.py	/^Enum = None$/;"	kind:variable	line:120
 Enum	../env/lib/python3.7/enum.py	/^class Enum(metaclass=EnumMeta):$/;"	kind:class	line:520
 EnumMeta	../env/lib/python3.7/enum.py	/^class EnumMeta(type):$/;"	kind:class	line:123
@@ -236,7 +239,6 @@ Expfloat	../env/lib/python3.7/tokenize.py	/^Expfloat = r'[0-9](?:_?[0-9])*' + Ex
 Exponent	../env/lib/python3.7/tokenize.py	/^Exponent = r'[eE][-+]?[0-9](?:_?[0-9])*'$/;"	kind:variable	line:123
 ExtensionFileLoader	../env/lib/python3.7/importlib/_bootstrap_external.py	/^class ExtensionFileLoader(FileLoader, _LoaderBasics):$/;"	kind:class	line:1021
 ExtractError	../env/lib/python3.7/tarfile.py	/^class ExtractError(TarError):$/;"	kind:class	line:276
-F1	../sequence_tagger.py	/^class F1(tf.keras.metrics.Metric):$/;"	kind:class	line:135
 FIFOTYPE	../env/lib/python3.7/tarfile.py	/^FIFOTYPE = b"6"                 # fifo special device$/;"	kind:variable	line:94
 FILE_ATTRIBUTE_ARCHIVE	../env/lib/python3.7/stat.py	/^FILE_ATTRIBUTE_ARCHIVE = 32$/;"	kind:variable	line:155
 FILE_ATTRIBUTE_COMPRESSED	../env/lib/python3.7/stat.py	/^FILE_ATTRIBUTE_COMPRESSED = 2048$/;"	kind:variable	line:156
@@ -287,6 +289,8 @@ I	../env/lib/python3.7/re.py	/^    I = IGNORECASE$/;"	kind:variable	line:152
 IGNORECASE	../env/lib/python3.7/re.py	/^    IGNORECASE = sre_compile.SRE_FLAG_IGNORECASE # ignore case$/;"	kind:variable	line:145
 IMP_HOOK	../env/lib/python3.7/imp.py	/^IMP_HOOK = 9$/;"	kind:variable	line:45
 INDENT	../env/lib/python3.7/token.py	/^INDENT = 5$/;"	kind:variable	line:18
+INSTALL_REQUIRES	../setup.py	/^    INSTALL_REQUIRES = [$/;"	kind:variable	line:16
+INSTALL_REQUIRES	../setup.py	/^    INSTALL_REQUIRES = []$/;"	kind:variable	line:20
 IOBase	../env/lib/python3.7/io.py	/^class IOBase(_io._IOBase, metaclass=abc.ABCMeta):$/;"	kind:class	line:72
 ISEOF	../env/lib/python3.7/token.py	/^def ISEOF(x):$/;"	kind:function	line:89
 ISNONTERMINAL	../env/lib/python3.7/token.py	/^def ISNONTERMINAL(x):$/;"	kind:function	line:86
@@ -568,6 +572,7 @@ LOCALE	../env/lib/python3.7/re.py	/^    LOCALE = sre_compile.SRE_FLAG_LOCALE # a
 LOG4	../env/lib/python3.7/random.py	/^LOG4 = _log(4.0)$/;"	kind:variable	line:60
 LPAR	../env/lib/python3.7/token.py	/^LPAR = 7$/;"	kind:variable	line:20
 LSQB	../env/lib/python3.7/token.py	/^LSQB = 9$/;"	kind:variable	line:22
+Label	../tf_tagger/utils/label.py	/^class Label:$/;"	kind:class	line:12
 LambdaType	../env/lib/python3.7/types.py	/^LambdaType = type(lambda: None)         # Same as FunctionType$/;"	kind:variable	line:13
 LazyLoader	../env/lib/python3.7/importlib/util.py	/^class LazyLoader(abc.Loader):$/;"	kind:class	line:266
 Loader	../env/lib/python3.7/importlib/abc.py	/^class Loader(metaclass=abc.ABCMeta):$/;"	kind:class	line:136
@@ -612,6 +617,7 @@ NamedTemporaryFile	../env/lib/python3.7/tempfile.py	/^def NamedTemporaryFile(mod
 NullImporter	../env/lib/python3.7/imp.py	/^class NullImporter:$/;"	kind:class	line:114
 Number	../env/lib/python3.7/tokenize.py	/^Number = group(Imagnumber, Floatnumber, Intnumber)$/;"	kind:variable	line:129
 OCTDIGITS	../env/lib/python3.7/sre_parse.py	/^OCTDIGITS = frozenset("01234567")$/;"	kind:variable	line:22
+ON_RTD	../setup.py	/^ON_RTD = os.environ.get('READTHEDOCS') == 'True'$/;"	kind:variable	line:14
 OP	../env/lib/python3.7/token.py	/^OP = 53$/;"	kind:variable	line:67
 OPEN_METH	../env/lib/python3.7/tarfile.py	/^    OPEN_METH = {$/;"	kind:variable	line:1715
 OP_IGNORE	../env/lib/python3.7/sre_constants.py	/^OP_IGNORE = {$/;"	kind:variable	line:151
@@ -621,6 +627,7 @@ Octnumber	../env/lib/python3.7/tokenize.py	/^Octnumber = r'0[oO](?:_?[0-7])+'$/;
 OpenWrapper	../env/lib/python3.7/io.py	/^OpenWrapper = _io.open # for compatibility with _pyio$/;"	kind:variable	line:59
 Operator	../env/lib/python3.7/tokenize.py	/^Operator = group(r"\\*\\*=?", r">>=?", r"<<=?", r"!=",$/;"	kind:variable	line:170
 OrderedDict	../env/lib/python3.7/collections/__init__.py	/^class OrderedDict(dict):$/;"	kind:class	line:81
+PAD	../tf_tagger/utils/label.py	/^PAD = '<PAD>'$/;"	kind:variable	line:9
 PAX_FIELDS	../env/lib/python3.7/tarfile.py	/^PAX_FIELDS = ("path", "linkpath", "size", "mtime",$/;"	kind:variable	line:129
 PAX_FORMAT	../env/lib/python3.7/tarfile.py	/^PAX_FORMAT = 2                  # POSIX.1-2001 (pax) format$/;"	kind:variable	line:107
 PAX_NAME_FIELDS	../env/lib/python3.7/tarfile.py	/^PAX_NAME_FIELDS = {"path", "linkpath", "uname", "gname"}$/;"	kind:variable	line:133
@@ -759,7 +766,6 @@ S_IXUSR	../env/lib/python3.7/stat.py	/^S_IXUSR = 0o0100  # execute by owner$/;"	
 SameFileError	../env/lib/python3.7/shutil.py	/^class SameFileError(Error):$/;"	kind:class	line:58
 Scanner	../env/lib/python3.7/re.py	/^class Scanner:$/;"	kind:class	line:329
 Sequence	../env/lib/python3.7/_collections_abc.py	/^class Sequence(Reversible, Collection):$/;"	kind:class	line:865
-SequenceTagger	../sequence_tagger.py	/^class SequenceTagger(Model):$/;"	kind:class	line:13
 Set	../env/lib/python3.7/_collections_abc.py	/^class Set(Collection):$/;"	kind:class	line:416
 SimpleNamespace	../env/lib/python3.7/types.py	/^SimpleNamespace = type(sys.implementation)$/;"	kind:variable	line:16
 Single	../env/lib/python3.7/tokenize.py	/^Single = r"[^'\\\\]*(?:\\\\.[^'\\\\]*)*'"$/;"	kind:variable	line:155
@@ -1034,16 +1040,13 @@ SystemRandom	../env/lib/python3.7/random.py	/^class SystemRandom(Random):$/;"	ki
 T	../env/lib/python3.7/encodings/punycode.py	/^def T(j, bias):$/;"	kind:function	line:70
 T	../env/lib/python3.7/re.py	/^    T = TEMPLATE$/;"	kind:variable	line:160
 TEMPLATE	../env/lib/python3.7/re.py	/^    TEMPLATE = sre_compile.SRE_FLAG_TEMPLATE # disable backtracking$/;"	kind:variable	line:159
-TFTagger	../test.py	/^class TFTagger(tf.keras.Model):$/;"	kind:class	line:77
-TFTaggerDecoder	../test.py	/^class TFTaggerDecoder(tf.keras.Model):$/;"	kind:class	line:6
-TFTaggerEmbed	../test.py	/^class TFTaggerEmbed(tf.keras.Model):$/;"	kind:class	line:60
-TFTaggerEncoder	../test.py	/^class TFTaggerEncoder(tf.keras.Model):$/;"	kind:class	line:41
+TFTagger	../tf_tagger/tf_tagger.py	/^class TFTagger:$/;"	kind:class	line:26
 TILDE	../env/lib/python3.7/token.py	/^TILDE = 31$/;"	kind:variable	line:44
 TIMEOUT_MAX	../env/lib/python3.7/_dummy_thread.py	/^TIMEOUT_MAX = 2**31$/;"	kind:variable	line:20
 TMP_MAX	../env/lib/python3.7/tempfile.py	/^    TMP_MAX = 10000$/;"	kind:variable	line:200
 TWOPI	../env/lib/python3.7/random.py	/^TWOPI = 2.0*_pi$/;"	kind:variable	line:59
 TYPE_FLAGS	../env/lib/python3.7/sre_parse.py	/^TYPE_FLAGS = SRE_FLAG_ASCII | SRE_FLAG_LOCALE | SRE_FLAG_UNICODE$/;"	kind:variable	line:68
-TagsInputter	../sequence_tagger.py	/^class TagsInputter(inputters.TextInputter):$/;"	kind:class	line:119
+TaggerModel	../tf_tagger/models/tagger_model.py	/^class TaggerModel(tf.keras.Model):$/;"	kind:class	line:13
 TarError	../env/lib/python3.7/tarfile.py	/^class TarError(Exception):$/;"	kind:class	line:273
 TarFile	../env/lib/python3.7/tarfile.py	/^class TarFile(object):$/;"	kind:class	line:1387
 TarInfo	../env/lib/python3.7/tarfile.py	/^class TarInfo(object):$/;"	kind:class	line:725
@@ -1057,6 +1060,7 @@ Token	../env/lib/python3.7/tokenize.py	/^Token = Ignore + PlainToken$/;"	kind:va
 TokenError	../env/lib/python3.7/tokenize.py	/^class TokenError(Exception): pass$/;"	kind:class	line:212
 TokenInfo	../env/lib/python3.7/tokenize.py	/^class TokenInfo(collections.namedtuple('TokenInfo', 'type string start end line')):$/;"	kind:class	line:94
 Tokenizer	../env/lib/python3.7/sre_parse.py	/^class Tokenizer:$/;"	kind:class	line:223
+Tokenizer	../tf_tagger/utils/tokenizer.py	/^class Tokenizer:$/;"	kind:class	line:9
 TracebackType	../env/lib/python3.7/types.py	/^    TracebackType = type(tb)$/;"	kind:variable	line:50
 Triple	../env/lib/python3.7/tokenize.py	/^Triple = group(StringPrefix + "'''", StringPrefix + '"""')$/;"	kind:variable	line:162
 TruncatedHeaderError	../env/lib/python3.7/tarfile.py	/^class TruncatedHeaderError(HeaderError):$/;"	kind:class	line:294
@@ -1069,6 +1073,7 @@ UF_NODUMP	../env/lib/python3.7/stat.py	/^UF_NODUMP    = 0x00000001  # do not dum
 UF_NOUNLINK	../env/lib/python3.7/stat.py	/^UF_NOUNLINK  = 0x00000010  # file may not be renamed or deleted$/;"	kind:variable	line:102
 UF_OPAQUE	../env/lib/python3.7/stat.py	/^UF_OPAQUE    = 0x00000008  # directory is opaque when viewed through a union stack$/;"	kind:variable	line:101
 UNICODE	../env/lib/python3.7/re.py	/^    UNICODE = sre_compile.SRE_FLAG_UNICODE # assume unicode "locale"$/;"	kind:variable	line:147
+URLS	../scripts/get_conll2003.py	/^URLS = [$/;"	kind:variable	line:8
 USER_BASE	../env/lib/python3.7/site.py	/^USER_BASE = None$/;"	kind:variable	line:85
 USER_SITE	../env/lib/python3.7/site.py	/^USER_SITE = None$/;"	kind:variable	line:84
 USTAR_FORMAT	../env/lib/python3.7/tarfile.py	/^USTAR_FORMAT = 0                # POSIX.1-1988 (ustar) format$/;"	kind:variable	line:105
@@ -1080,6 +1085,7 @@ VBAR	../env/lib/python3.7/token.py	/^VBAR = 18$/;"	kind:variable	line:31
 VBAREQUAL	../env/lib/python3.7/token.py	/^VBAREQUAL = 42$/;"	kind:variable	line:55
 VERBOSE	../env/lib/python3.7/re.py	/^    VERBOSE = sre_compile.SRE_FLAG_VERBOSE # ignore whitespace and comments$/;"	kind:variable	line:150
 VERSION	../env/lib/python3.7/random.py	/^    VERSION = 3     # used by getstate\/setstate$/;"	kind:variable	line:86
+VERSION	../setup.py	/^VERSION = os.path.join($/;"	kind:variable	line:22
 ValuesView	../env/lib/python3.7/_collections_abc.py	/^class ValuesView(MappingView, Collection):$/;"	kind:class	line:749
 Verbose	../env/lib/python3.7/sre_parse.py	/^class Verbose(Exception):$/;"	kind:class	line:71
 WHITESPACE	../env/lib/python3.7/sre_parse.py	/^WHITESPACE = frozenset(" \\t\\n\\r\\v\\f")$/;"	kind:variable	line:26
@@ -1213,6 +1219,7 @@ __all__	../env/lib/python3.7/tokenize.py	/^__all__ = token.__all__ + ["tokenize"
 __all__	../env/lib/python3.7/types.py	/^__all__ = [n for n in globals() if n[:1] != '_']$/;"	kind:variable	line:295
 __all__	../env/lib/python3.7/warnings.py	/^__all__ = ["warn", "warn_explicit", "showwarning",$/;"	kind:variable	line:6
 __all__	../env/lib/python3.7/weakref.py	/^__all__ = ["ref", "proxy", "getweakrefcount", "getweakrefs",$/;"	kind:variable	line:30
+__all__	../tf_tagger/__init__.py	/^__all__ = ['TFTagger', 'extract_entities']$/;"	kind:variable	line:4
 __always_supported	../env/lib/python3.7/hashlib.py	/^__always_supported = ('md5', 'sha1', 'sha224', 'sha256', 'sha384', 'sha512',$/;"	kind:variable	line:58
 __and__	../env/lib/python3.7/_collections_abc.py	/^    def __and__(self, other):$/;"	kind:member	line:474
 __and__	../env/lib/python3.7/_weakrefset.py	/^    __and__ = intersection$/;"	kind:variable	line:145
@@ -1375,6 +1382,7 @@ __getitem__	../env/lib/python3.7/weakref.py	/^    def __getitem__(self, key):$/;
 __getnewargs__	../env/lib/python3.7/collections/__init__.py	/^    def __getnewargs__(self):$/;"	kind:function	line:430
 __getnewargs__	../env/lib/python3.7/collections/__init__.py	/^    def __getnewargs__(self):$/;"	kind:member	line:1149
 __getstate__	../env/lib/python3.7/random.py	/^    def __getstate__(self): # for pickle$/;"	kind:member	line:163
+__getstate__	../tf_tagger/tf_tagger.py	/^    def __getstate__(self):$/;"	kind:member	line:122
 __gt__	../env/lib/python3.7/_collections_abc.py	/^    def __gt__(self, other):$/;"	kind:member	line:445
 __gt__	../env/lib/python3.7/_weakrefset.py	/^    def __gt__(self, other):$/;"	kind:member	line:166
 __gt__	../env/lib/python3.7/collections/__init__.py	/^    def __gt__(self, other): return self.data >  self.__cast(other)$/;"	kind:member	line:1078
@@ -1498,17 +1506,19 @@ __init__	../env/lib/python3.7/weakref.py	/^    def __init__(*args, **kw):$/;"	ki
 __init__	../env/lib/python3.7/weakref.py	/^    def __init__(self, dict=None):$/;"	kind:member	line:356
 __init__	../env/lib/python3.7/weakref.py	/^    def __init__(self, ob, callback, key):$/;"	kind:member	line:341
 __init__	../env/lib/python3.7/weakref.py	/^    def __init__(self, obj, func, *args, **kwargs):$/;"	kind:member	line:530
-__init__	../sequence_tagger.py	/^  def __init__(self):$/;"	kind:member	line:122
-__init__	../sequence_tagger.py	/^  def __init__(self, **kwargs):$/;"	kind:member	line:138
-__init__	../sequence_tagger.py	/^  def __init__(self, inputter, encoder, crf_decoding=False):$/;"	kind:member	line:16
-__init__	../test.py	/^    def __init__(self, embedding_size, max_sequence_length):$/;"	kind:member	line:43
-__init__	../test.py	/^    def __init__(self, embedding_size, max_sequence_length, vocab_size):$/;"	kind:member	line:62
-__init__	../test.py	/^    def __init__(self, tag_size):$/;"	kind:member	line:8
-__init__	../test.py	/^    def __init__(self,$/;"	kind:member	line:78
+__init__	../tf_tagger/models/decoder.py	/^    def __init__(self, tag_size):$/;"	kind:member	line:12
+__init__	../tf_tagger/models/embed.py	/^    def __init__(self, embedding_size, vocab_size):$/;"	kind:member	line:12
+__init__	../tf_tagger/models/encoder.py	/^    def __init__(self, embedding_size, hidden_size, layer_size=1):$/;"	kind:member	line:12
+__init__	../tf_tagger/models/tagger_model.py	/^    def __init__(self,$/;"	kind:member	line:14
+__init__	../tf_tagger/tf_tagger.py	/^    def __init__(self, embedding_size=100, hidden_size=100, batch_size=32, epoch=100):$/;"	kind:member	line:27
+__init__	../tf_tagger/utils/label.py	/^    def __init__(self):$/;"	kind:member	line:13
+__init__	../tf_tagger/utils/tokenizer.py	/^    def __init__(self):$/;"	kind:member	line:10
 __init__.py	../env/lib/python3.7/collections/__init__.py	1;"	kind:file	line:1
 __init__.py	../env/lib/python3.7/distutils/__init__.py	1;"	kind:file	line:1
 __init__.py	../env/lib/python3.7/encodings/__init__.py	1;"	kind:file	line:1
 __init__.py	../env/lib/python3.7/importlib/__init__.py	1;"	kind:file	line:1
+__init__.py	../tf_tagger/__init__.py	1;"	kind:file	line:1
+__init__.py	../tf_tagger/test/__init__.py	1;"	kind:file	line:1
 __instancecheck__	../env/lib/python3.7/abc.py	/^        def __instancecheck__(cls, instance):$/;"	kind:member	line:137
 __int__	../env/lib/python3.7/collections/__init__.py	/^    def __int__(self): return int(self.data)$/;"	kind:member	line:1145
 __inv__	../env/lib/python3.7/operator.py	/^__inv__ = inv$/;"	kind:variable	line:432
@@ -1717,6 +1727,7 @@ __setitem__	../env/lib/python3.7/weakref.py	/^    def __setitem__(self, key, val
 __setitem__	../env/lib/python3.7/weakref.py	/^    def __setitem__(self, key, value):$/;"	kind:member	line:408
 __setstate__	../env/lib/python3.7/functools.py	/^    def __setstate__(self, state):$/;"	kind:member	line:288
 __setstate__	../env/lib/python3.7/random.py	/^    def __setstate__(self, state):  # for pickle$/;"	kind:member	line:166
+__setstate__	../tf_tagger/tf_tagger.py	/^    def __setstate__(self, state):$/;"	kind:member	line:130
 __setup	../env/lib/python3.7/site.py	/^    def __setup(self):$/;"	kind:member	line:417
 __sizeof__	../env/lib/python3.7/collections/__init__.py	/^    def __sizeof__(self):$/;"	kind:member	line:215
 __slots__	../env/lib/python3.7/_collections_abc.py	/^    __slots__ = '_mapping',$/;"	kind:variable	line:696
@@ -1798,11 +1809,7 @@ _abc_registry_clear	../env/lib/python3.7/abc.py	/^        def _abc_registry_clea
 _abspath_fallback	../env/lib/python3.7/ntpath.py	/^def _abspath_fallback(path):$/;"	kind:function	line:499
 _access_check	../env/lib/python3.7/shutil.py	/^    def _access_check(fn, mode):$/;"	kind:function	line:1128
 _add	../env/lib/python3.7/os.py	/^    def _add(str, fn):$/;"	kind:function	line:100
-_add_false_negative	../sequence_tagger.py	/^  def _add_false_negative():$/;"	kind:function	line:196
-_add_false_positive	../sequence_tagger.py	/^  def _add_false_positive():$/;"	kind:function	line:190
 _add_filter	../env/lib/python3.7/warnings.py	/^def _add_filter(*item, append):$/;"	kind:function	line:181
-_add_true_negative	../sequence_tagger.py	/^  def _add_true_negative():$/;"	kind:function	line:193
-_add_true_positive	../sequence_tagger.py	/^  def _add_true_positive():$/;"	kind:function	line:187
 _ag	../env/lib/python3.7/_collections_abc.py	/^_ag = _ag()$/;"	kind:variable	line:65
 _ag	../env/lib/python3.7/_collections_abc.py	/^async def _ag(): yield$/;"	kind:function	line:64
 _ag	../env/lib/python3.7/types.py	/^_ag = _ag()$/;"	kind:variable	line:29
@@ -1993,6 +2000,7 @@ _get_package	../env/lib/python3.7/importlib/resources.py	/^def _get_package(pack
 _get_parent_path	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def _get_parent_path(self):$/;"	kind:member	line:1097
 _get_resource_reader	../env/lib/python3.7/importlib/resources.py	/^def _get_resource_reader($/;"	kind:function	line:66
 _get_sep	../env/lib/python3.7/posixpath.py	/^def _get_sep(path):$/;"	kind:function	line:41
+_get_sets	../tf_tagger/tf_tagger.py	/^    def _get_sets(self, X, y, verbose, batch_size):$/;"	kind:member	line:141
 _get_sourcefile	../env/lib/python3.7/importlib/_bootstrap_external.py	/^def _get_sourcefile(bytecode_path):$/;"	kind:function	line:350
 _get_spec	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def _get_spec(cls, fullname, path, target=None):$/;"	kind:member	line:1241
 _get_spec	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def _get_spec(self, loader_class, fullname, path, smsl, target):$/;"	kind:member	line:1351
@@ -2072,7 +2080,6 @@ _make_tarball	../env/lib/python3.7/shutil.py	/^def _make_tarball(base_name, base
 _make_unbound_method	../env/lib/python3.7/functools.py	/^    def _make_unbound_method(self):$/;"	kind:member	line:357
 _make_zipfile	../env/lib/python3.7/shutil.py	/^def _make_zipfile(base_name, base_dir, verbose=0, dry_run=0, logger=None):$/;"	kind:function	line:679
 _makecodes	../env/lib/python3.7/sre_constants.py	/^def _makecodes(names):$/;"	kind:function	line:69
-_match	../sequence_tagger.py	/^  def _match(ref, hyp, index, length):$/;"	kind:function	line:200
 _method	../env/lib/python3.7/functools.py	/^        def _method(*args, **keywords):$/;"	kind:function	line:358
 _missing_	../env/lib/python3.7/enum.py	/^    def _missing_(cls, value):$/;"	kind:member	line:576
 _missing_	../env/lib/python3.7/enum.py	/^    def _missing_(cls, value):$/;"	kind:member	line:700
@@ -2296,6 +2303,8 @@ atof	../env/lib/python3.7/locale.py	/^def atof(string, func=float):$/;"	kind:fun
 atoi	../env/lib/python3.7/locale.py	/^def atoi(string):$/;"	kind:function	line:328
 attr_matches	../env/lib/python3.7/rlcompleter.py	/^    def attr_matches(self, text):$/;"	kind:member	line:130
 attrgetter	../env/lib/python3.7/operator.py	/^class attrgetter:$/;"	kind:class	line:226
+author	../setup.py	/^    author='deepdialog',$/;"	kind:variable	line:36
+author_email	../setup.py	/^    author_email='thebotbot@sina.com',$/;"	kind:variable	line:37
 auto	../env/lib/python3.7/enum.py	/^class auto:$/;"	kind:class	line:50
 b16decode	../env/lib/python3.7/base64.py	/^def b16decode(s, casefold=False):$/;"	kind:function	line:253
 b16encode	../env/lib/python3.7/base64.py	/^def b16encode(s):$/;"	kind:function	line:247
@@ -2316,7 +2325,6 @@ base64_encode	../env/lib/python3.7/encodings/base64_codec.py	/^def base64_encode
 basename	../env/lib/python3.7/ntpath.py	/^def basename(p):$/;"	kind:function	line:212
 basename	../env/lib/python3.7/posixpath.py	/^def basename(p):$/;"	kind:function	line:144
 basestring	../env/lib/python3.7/distutils/__init__.py	/^    basestring = str$/;"	kind:variable	line:49
-batch_size	../test.py	/^    batch_size = 256$/;"	kind:variable	line:110
 betavariate	../env/lib/python3.7/random.py	/^    def betavariate(self, alpha, beta):$/;"	kind:member	line:629
 betavariate	../env/lib/python3.7/random.py	/^betavariate = _inst.betavariate$/;"	kind:variable	line:765
 big5.py	../env/lib/python3.7/encodings/big5.py	1;"	kind:file	line:1
@@ -2328,8 +2336,8 @@ bisect_left	../env/lib/python3.7/bisect.py	/^def bisect_left(a, x, lo=0, hi=None
 bisect_right	../env/lib/python3.7/bisect.py	/^def bisect_right(a, x, lo=0, hi=None):$/;"	kind:function	line:22
 blank_re	../env/lib/python3.7/tokenize.py	/^blank_re = re.compile(br'^[ \\t\\f]*(?:[#\\r\\n]|$)', re.ASCII)$/;"	kind:variable	line:38
 blocksize	../env/lib/python3.7/hmac.py	/^    blocksize = 64  # 512-bit HMAC; can be changed in subclasses.$/;"	kind:variable	line:31
-build	../sequence_tagger.py	/^  def build(self, input_shape):$/;"	kind:member	line:38
 build_ext	../env/lib/python3.7/distutils/__init__.py	/^    class build_ext(old_build_ext):$/;"	kind:class	line:57
+build_model	../tf_tagger/tf_tagger.py	/^    def build_model(self):$/;"	kind:member	line:34
 bytearray_iterator	../env/lib/python3.7/_collections_abc.py	/^bytearray_iterator = type(iter(bytearray()))$/;"	kind:variable	line:37
 bytes_iterator	../env/lib/python3.7/_collections_abc.py	/^bytes_iterator = type(iter(b''))$/;"	kind:variable	line:36
 bytes_types	../env/lib/python3.7/base64.py	/^bytes_types = (bytes, bytearray)  # Types acceptable as binary data$/;"	kind:variable	line:32
@@ -2345,11 +2353,10 @@ cache_info	../env/lib/python3.7/functools.py	/^    def cache_info():$/;"	kind:fu
 cached	../env/lib/python3.7/importlib/_bootstrap.py	/^    def cached(self):$/;"	kind:member	line:404
 cached	../env/lib/python3.7/importlib/_bootstrap.py	/^    def cached(self, cached):$/;"	kind:member	line:413
 calc_chksums	../env/lib/python3.7/tarfile.py	/^def calc_chksums(buf):$/;"	kind:function	line:221
-call	../sequence_tagger.py	/^  def call(self, features, labels=None, training=None, step=None):$/;"	kind:member	line:45
-call	../test.py	/^    def call(self, inputs):$/;"	kind:member	line:56
-call	../test.py	/^    def call(self, inputs):$/;"	kind:member	line:73
-call	../test.py	/^    def call(self, inputs, lengths):$/;"	kind:member	line:19
-call	../test.py	/^    def call(self, inputs, lengths):$/;"	kind:member	line:95
+call	../tf_tagger/models/decoder.py	/^    def call(self, inputs, lengths):$/;"	kind:member	line:22
+call	../tf_tagger/models/embed.py	/^    def call(self, inputs):$/;"	kind:member	line:21
+call	../tf_tagger/models/encoder.py	/^    def call(self, inputs, mask):$/;"	kind:member	line:28
+call	../tf_tagger/models/tagger_model.py	/^    def call(self, inputs):$/;"	kind:member	line:44
 capitalize	../env/lib/python3.7/collections/__init__.py	/^    def capitalize(self): return self.__class__(self.data.capitalize())$/;"	kind:member	line:1199
 casefold	../env/lib/python3.7/collections/__init__.py	/^    def casefold(self):$/;"	kind:member	line:1200
 catch_warnings	../env/lib/python3.7/warnings.py	/^class catch_warnings(object):$/;"	kind:class	line:436
@@ -2537,10 +2544,11 @@ compat	../env/lib/python3.7/tokenize.py	/^    def compat(self, token, iterable):
 compile	../env/lib/python3.7/re.py	/^def compile(pattern, flags=0):$/;"	kind:function	line:232
 compile	../env/lib/python3.7/sre_compile.py	/^def compile(p, flags=0):$/;"	kind:function	line:759
 complete	../env/lib/python3.7/rlcompleter.py	/^    def complete(self, text, state):$/;"	kind:member	line:66
-compute_loss	../sequence_tagger.py	/^  def compute_loss(self, outputs, labels, training=True):$/;"	kind:member	line:67
-compute_loss	../test.py	/^    def compute_loss(self, inputs, lengths, tags):$/;"	kind:member	line:101
-compute_loss	../test.py	/^    def compute_loss(self, inputs, lengths, tags):$/;"	kind:member	line:31
+compute_loss	../tf_tagger/models/decoder.py	/^    def compute_loss(self, inputs, lengths, tags):$/;"	kind:member	line:33
+compute_loss	../tf_tagger/models/tagger_model.py	/^    def compute_loss(self, inputs, tags):$/;"	kind:member	line:48
 concat	../env/lib/python3.7/operator.py	/^def concat(a, b):$/;"	kind:function	line:146
+conll2002.py	../tf_tagger/test/conll2002.py	1;"	kind:file	line:1
+conll2003.py	../tf_tagger/test/conll2003.py	1;"	kind:file	line:1
 constructor	../env/lib/python3.7/copyreg.py	/^def constructor(object):$/;"	kind:function	line:22
 contains	../env/lib/python3.7/operator.py	/^def contains(a, b):$/;"	kind:function	line:153
 contents	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def contents(self):$/;"	kind:member	line:943
@@ -2870,6 +2878,7 @@ decode	../env/lib/python3.7/os.py	/^        def decode(value):$/;"	kind:function
 decode_generalized_number	../env/lib/python3.7/encodings/punycode.py	/^def decode_generalized_number(extended, extpos, bias, errors):$/;"	kind:function	line:127
 decode_source	../env/lib/python3.7/importlib/_bootstrap_external.py	/^def decode_source(source_bytes):$/;"	kind:function	line:557
 decodebytes	../env/lib/python3.7/base64.py	/^def decodebytes(s):$/;"	kind:function	line:543
+decoder.py	../tf_tagger/models/decoder.py	1;"	kind:file	line:1
 decodestring	../env/lib/python3.7/base64.py	/^def decodestring(s):$/;"	kind:function	line:548
 decoding_map	../env/lib/python3.7/encodings/cp1125.py	/^decoding_map = codecs.make_identity_dict(range(256))$/;"	kind:variable	line:46
 decoding_map	../env/lib/python3.7/encodings/cp437.py	/^decoding_map = codecs.make_identity_dict(range(256))$/;"	kind:variable	line:46
@@ -2971,6 +2980,7 @@ deleter	../env/lib/python3.7/types.py	/^    def deleter(self, fdel):$/;"	kind:me
 delitem	../env/lib/python3.7/operator.py	/^def delitem(a, b):$/;"	kind:function	line:165
 delocalize	../env/lib/python3.7/locale.py	/^def delocalize(string):$/;"	kind:function	line:308
 dereference	../env/lib/python3.7/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1393
+description	../setup.py	/^    description='NLP tool',$/;"	kind:variable	line:32
 detach	../env/lib/python3.7/weakref.py	/^    def detach(self):$/;"	kind:member	line:554
 detect_encoding	../env/lib/python3.7/tokenize.py	/^def detect_encoding(readline):$/;"	kind:function	line:350
 devnull	../env/lib/python3.7/ntpath.py	/^devnull = 'nul'$/;"	kind:variable	line:18
@@ -3005,7 +3015,7 @@ dots	../env/lib/python3.7/encodings/idna.py	/^dots = re.compile("[\\u002E\\u3002
 dump	../env/lib/python3.7/sre_constants.py	/^    def dump(f, d, prefix):$/;"	kind:function	line:220
 dump	../env/lib/python3.7/sre_parse.py	/^    def dump(self, level=0):$/;"	kind:member	line:118
 elements	../env/lib/python3.7/collections/__init__.py	/^    def elements(self):$/;"	kind:member	line:586
-embedding_size	../test.py	/^    embedding_size = 100$/;"	kind:variable	line:112
+embed.py	../tf_tagger/models/embed.py	1;"	kind:file	line:1
 enablerlcompleter	../env/lib/python3.7/site.py	/^def enablerlcompleter():$/;"	kind:function	line:676
 encode	../env/lib/python3.7/base64.py	/^def encode(input, output):$/;"	kind:function	line:484
 encode	../env/lib/python3.7/codecs.py	/^    def encode(self, input, errors='strict'):$/;"	kind:member	line:138
@@ -3251,6 +3261,7 @@ encode	../env/lib/python3.7/encodings/zlib_codec.py	/^    def encode(self, input
 encode	../env/lib/python3.7/os.py	/^        def encode(value):$/;"	kind:function	line:751
 encodebytes	../env/lib/python3.7/base64.py	/^def encodebytes(s):$/;"	kind:function	line:524
 encodekey	../env/lib/python3.7/os.py	/^        def encodekey(key):$/;"	kind:function	line:743
+encoder.py	../tf_tagger/models/encoder.py	1;"	kind:file	line:1
 encodestring	../env/lib/python3.7/base64.py	/^def encodestring(s):$/;"	kind:function	line:534
 encoding	../env/lib/python3.7/codecs.py	/^    encoding = 'unknown'$/;"	kind:variable	line:679
 encoding	../env/lib/python3.7/tarfile.py	/^    encoding = ENCODING         # Encoding for 8-bit character strings.$/;"	kind:variable	line:1405
@@ -3378,6 +3389,8 @@ extend	../env/lib/python3.7/_collections_abc.py	/^    def extend(self, values):$
 extend	../env/lib/python3.7/collections/__init__.py	/^    def extend(self, other):$/;"	kind:member	line:1123
 extract	../env/lib/python3.7/tarfile.py	/^    def extract(self, member, path="", set_attrs=True, *, numeric_owner=False):$/;"	kind:member	line:2021
 extract	../env/lib/python3.7/warnings.py	/^        def extract():$/;"	kind:function	line:509
+extract_entities	../tf_tagger/utils/extract_entities.py	/^def extract_entities(seq: list, x=None) -> list:$/;"	kind:function	line:2
+extract_entities.py	../tf_tagger/utils/extract_entities.py	1;"	kind:file	line:1
 extractall	../env/lib/python3.7/tarfile.py	/^    def extractall(self, path=".", members=None, *, numeric_owner=False):$/;"	kind:member	line:1981
 extractfile	../env/lib/python3.7/tarfile.py	/^    def extractfile(self, member):$/;"	kind:member	line:2059
 extsep	../env/lib/python3.7/ntpath.py	/^extsep = '.'$/;"	kind:variable	line:13
@@ -3420,9 +3433,11 @@ find_spec	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def find_s
 find_spec	../env/lib/python3.7/importlib/util.py	/^def find_spec(name, package=None):$/;"	kind:function	line:73
 findall	../env/lib/python3.7/re.py	/^def findall(pattern, string, flags=0):$/;"	kind:function	line:215
 finditer	../env/lib/python3.7/re.py	/^def finditer(pattern, string, flags=0):$/;"	kind:function	line:225
+fit	../tf_tagger/tf_tagger.py	/^    def fit(self, X, y, X_dev=None, y_dev=None):$/;"	kind:member	line:40
+fit	../tf_tagger/utils/label.py	/^    def fit(self, y):$/;"	kind:member	line:16
+fit	../tf_tagger/utils/tokenizer.py	/^    def fit(self, X):$/;"	kind:member	line:16
 fix_flags	../env/lib/python3.7/sre_parse.py	/^def fix_flags(src, flags):$/;"	kind:function	line:903
 fixclasspath	../env/lib/python3.7/site.py	/^def fixclasspath():$/;"	kind:function	line:653
-flag_bioes_tags	../sequence_tagger.py	/^def flag_bioes_tags(gold, predicted, sequence_length=None):$/;"	kind:function	line:165
 floordiv	../env/lib/python3.7/operator.py	/^def floordiv(a, b):$/;"	kind:function	line:83
 flush	../env/lib/python3.7/tarfile.py	/^    def flush(self):$/;"	kind:member	line:641
 flush	../env/lib/python3.7/tempfile.py	/^    def flush(self):$/;"	kind:member	line:845
@@ -3461,6 +3476,7 @@ gb18030.py	../env/lib/python3.7/encodings/gb18030.py	1;"	kind:file	line:1
 gb2312.py	../env/lib/python3.7/encodings/gb2312.py	1;"	kind:file	line:1
 gbk.py	../env/lib/python3.7/encodings/gbk.py	1;"	kind:file	line:1
 ge	../env/lib/python3.7/operator.py	/^def ge(a, b):$/;"	kind:function	line:43
+gendata	../tf_tagger/tf_tagger.py	/^        def gendata(X, y, batch_size):$/;"	kind:function	line:59
 generate_generalized_integer	../env/lib/python3.7/encodings/punycode.py	/^def generate_generalized_integer(N, bias):$/;"	kind:function	line:78
 generate_integers	../env/lib/python3.7/encodings/punycode.py	/^def generate_integers(baselen, deltas):$/;"	kind:function	line:106
 generate_tokens	../env/lib/python3.7/tokenize.py	/^def generate_tokens(readline):$/;"	kind:function	line:672
@@ -3485,6 +3501,7 @@ get_code	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def get_cod
 get_code	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def get_code(self, fullname):$/;"	kind:member	line:996
 get_code	../env/lib/python3.7/importlib/abc.py	/^    def get_code(self, fullname):$/;"	kind:member	line:216
 get_code	../env/lib/python3.7/importlib/abc.py	/^    def get_code(self, fullname):$/;"	kind:member	line:270
+get_conll2003.py	../scripts/get_conll2003.py	1;"	kind:file	line:1
 get_data	../env/lib/python3.7/imp.py	/^    def get_data(self, path):$/;"	kind:member	line:142
 get_data	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def get_data(self, path):$/;"	kind:member	line:914
 get_data	../env/lib/python3.7/importlib/abc.py	/^    def get_data(self, path):$/;"	kind:member	line:193
@@ -3495,7 +3512,6 @@ get_filename	../env/lib/python3.7/importlib/abc.py	/^    def get_filename(self, 
 get_ident	../env/lib/python3.7/_dummy_thread.py	/^def get_ident():$/;"	kind:function	line:65
 get_info	../env/lib/python3.7/tarfile.py	/^    def get_info(self):$/;"	kind:member	line:784
 get_magic	../env/lib/python3.7/imp.py	/^def get_magic():$/;"	kind:function	line:59
-get_metrics	../sequence_tagger.py	/^  def get_metrics(self):$/;"	kind:member	line:85
 get_resource_reader	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def get_resource_reader(self, module):$/;"	kind:member	line:922
 get_source	../env/lib/python3.7/importlib/_bootstrap.py	/^    def get_source(cls, fullname):$/;"	kind:member	line:761
 get_source	../env/lib/python3.7/importlib/_bootstrap.py	/^    def get_source(cls, fullname):$/;"	kind:member	line:838
@@ -3692,6 +3708,7 @@ gi_frame	../env/lib/python3.7/types.py	/^    def gi_frame(self):$/;"	kind:member
 gi_running	../env/lib/python3.7/types.py	/^    def gi_running(self):$/;"	kind:member	line:220
 gi_yieldfrom	../env/lib/python3.7/types.py	/^    def gi_yieldfrom(self):$/;"	kind:member	line:223
 global_matches	../env/lib/python3.7/rlcompleter.py	/^    def global_matches(self, text):$/;"	kind:member	line:102
+gpus	../tf_tagger/tf_tagger.py	/^gpus = tf.config.experimental.list_physical_devices('GPU')$/;"	kind:variable	line:13
 group	../env/lib/python3.7/tokenize.py	/^def group(*choices): return '(' + '|'.join(choices) + ')'$/;"	kind:function	line:107
 groups	../env/lib/python3.7/sre_parse.py	/^    def groups(self):$/;"	kind:member	line:82
 grp	../env/lib/python3.7/tarfile.py	/^    grp = None$/;"	kind:variable	line:57
@@ -3730,13 +3747,13 @@ imp.py	../env/lib/python3.7/imp.py	1;"	kind:file	line:1
 import_builtin_stuff	../env/lib/python3.7/site.py	/^    def import_builtin_stuff():$/;"	kind:function	line:738
 import_module	../env/lib/python3.7/importlib/__init__.py	/^def import_module(name, package=None):$/;"	kind:function	line:109
 imul	../env/lib/python3.7/operator.py	/^def imul(a, b):$/;"	kind:function	line:370
+include_package_data	../setup.py	/^    include_package_data=True,$/;"	kind:variable	line:39
 index	../env/lib/python3.7/_collections_abc.py	/^    def index(self, value, start=0, stop=None):$/;"	kind:member	line:899
 index	../env/lib/python3.7/collections/__init__.py	/^    def index(self, item, *args): return self.data.index(item, *args)$/;"	kind:member	line:1120
 index	../env/lib/python3.7/collections/__init__.py	/^    def index(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1226
 index	../env/lib/python3.7/operator.py	/^def index(a):$/;"	kind:function	line:87
 indexOf	../env/lib/python3.7/operator.py	/^def indexOf(a, b):$/;"	kind:function	line:173
 init_builtin	../env/lib/python3.7/imp.py	/^def init_builtin(name):$/;"	kind:function	line:317
-initialize	../sequence_tagger.py	/^  def initialize(self, data_config, params=None):$/;"	kind:member	line:32
 insert	../env/lib/python3.7/_collections_abc.py	/^    def insert(self, index, value):$/;"	kind:member	line:965
 insert	../env/lib/python3.7/collections/__init__.py	/^    def insert(self, i, item): self.data.insert(i, item)$/;"	kind:member	line:1114
 insert	../env/lib/python3.7/sre_parse.py	/^    def insert(self, index, code):$/;"	kind:member	line:170
@@ -3745,6 +3762,7 @@ insertion_unsort	../env/lib/python3.7/encodings/punycode.py	/^def insertion_unso
 insort	../env/lib/python3.7/bisect.py	/^insort = insort_right$/;"	kind:variable	line:92
 insort_left	../env/lib/python3.7/bisect.py	/^def insort_left(a, x, lo=0, hi=None):$/;"	kind:function	line:43
 insort_right	../env/lib/python3.7/bisect.py	/^def insort_right(a, x, lo=0, hi=None):$/;"	kind:function	line:3
+install_requires	../setup.py	/^    install_requires=INSTALL_REQUIRES$/;"	kind:variable	line:41
 interrupt_main	../env/lib/python3.7/_dummy_thread.py	/^def interrupt_main():$/;"	kind:function	line:156
 intersection	../env/lib/python3.7/_weakrefset.py	/^    def intersection(self, other):$/;"	kind:member	line:143
 intersection_update	../env/lib/python3.7/_weakrefset.py	/^    def intersection_update(self, other):$/;"	kind:member	line:147
@@ -3754,6 +3772,7 @@ invalidate_caches	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    de
 invalidate_caches	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def invalidate_caches(self):$/;"	kind:member	line:1333
 invalidate_caches	../env/lib/python3.7/importlib/abc.py	/^    def invalidate_caches(self):$/;"	kind:member	line:128
 invalidate_caches	../env/lib/python3.7/importlib/abc.py	/^    def invalidate_caches(self):$/;"	kind:member	line:78
+inverse_transform	../tf_tagger/utils/label.py	/^    def inverse_transform(self, y):$/;"	kind:member	line:34
 invert	../env/lib/python3.7/operator.py	/^invert = inv$/;"	kind:variable	line:94
 io.py	../env/lib/python3.7/io.py	1;"	kind:file	line:1
 ior	../env/lib/python3.7/operator.py	/^def ior(a, b):$/;"	kind:function	line:380
@@ -3857,17 +3876,21 @@ keys	../env/lib/python3.7/collections/__init__.py	/^    def keys(self):$/;"	kind
 keys	../env/lib/python3.7/weakref.py	/^    def keys(self):$/;"	kind:member	line:219
 keys	../env/lib/python3.7/weakref.py	/^    def keys(self):$/;"	kind:member	line:449
 keyword.py	../env/lib/python3.7/keyword.py	1;"	kind:file	line:1
+keywords	../setup.py	/^    keywords=('pip', 'tensorflow', 'NER', 'tagger'),$/;"	kind:variable	line:31
 koi8_r.py	../env/lib/python3.7/encodings/koi8_r.py	1;"	kind:file	line:1
 koi8_t.py	../env/lib/python3.7/encodings/koi8_t.py	1;"	kind:file	line:1
 koi8_u.py	../env/lib/python3.7/encodings/koi8_u.py	1;"	kind:file	line:1
 kwlist	../env/lib/python3.7/keyword.py	/^kwlist = [$/;"	kind:variable	line:15
 kz1048.py	../env/lib/python3.7/encodings/kz1048.py	1;"	kind:file	line:1
+label.py	../tf_tagger/utils/label.py	1;"	kind:file	line:1
 latin_1.py	../env/lib/python3.7/encodings/latin_1.py	1;"	kind:file	line:1
 lazycache	../env/lib/python3.7/linecache.py	/^def lazycache(filename, module_globals):$/;"	kind:function	line:147
 le	../env/lib/python3.7/operator.py	/^def le(a, b):$/;"	kind:function	line:31
 length_hint	../env/lib/python3.7/operator.py	/^def length_hint(obj, default=0):$/;"	kind:function	line:185
 lexists	../env/lib/python3.7/ntpath.py	/^def lexists(path):$/;"	kind:function	line:238
 lexists	../env/lib/python3.7/posixpath.py	/^def lexists(path):$/;"	kind:function	line:178
+license	../setup.py	/^    license='Private',$/;"	kind:variable	line:34
+limit	../tf_tagger/test/conll2003.py	/^    def limit(x):$/;"	kind:function	line:12
 linecache.py	../env/lib/python3.7/linecache.py	1;"	kind:file	line:1
 linesep	../env/lib/python3.7/os.py	/^    linesep = '\\r\\n'$/;"	kind:variable	line:70
 linkpath	../env/lib/python3.7/tarfile.py	/^    def linkpath(self):$/;"	kind:member	line:774
@@ -3895,8 +3918,11 @@ locale_encoding_alias	../env/lib/python3.7/locale.py	/^locale_encoding_alias = {
 localeconv	../env/lib/python3.7/locale.py	/^    def localeconv():$/;"	kind:function	line:63
 localeconv	../env/lib/python3.7/locale.py	/^def localeconv():$/;"	kind:function	line:109
 locked	../env/lib/python3.7/_dummy_thread.py	/^    def locked(self):$/;"	kind:member	line:140
+logical_gpus	../tf_tagger/tf_tagger.py	/^            logical_gpus = tf.config.experimental.list_logical_devices('GPU')$/;"	kind:variable	line:19
+logits	../tf_tagger/models/tagger_model.py	/^    def logits(self, inputs):$/;"	kind:member	line:36
 lognormvariate	../env/lib/python3.7/random.py	/^    def lognormvariate(self, mu, sigma):$/;"	kind:member	line:425
 lognormvariate	../env/lib/python3.7/random.py	/^lognormvariate = _inst.lognormvariate$/;"	kind:variable	line:760
+long_description	../setup.py	/^    long_description='NLP tool, NER, POS',$/;"	kind:variable	line:33
 longrange_iterator	../env/lib/python3.7/_collections_abc.py	/^longrange_iterator = type(iter(range(1 << 1000)))$/;"	kind:variable	line:45
 lookup	../env/lib/python3.7/shutil.py	/^        def lookup(name):$/;"	kind:function	line:191
 lookup	../env/lib/python3.7/shutil.py	/^        def lookup(name):$/;"	kind:function	line:196
@@ -3922,9 +3948,10 @@ main	../env/lib/python3.7/keyword.py	/^def main():$/;"	kind:function	line:57
 main	../env/lib/python3.7/site.py	/^def main():$/;"	kind:function	line:752
 main	../env/lib/python3.7/tarfile.py	/^def main():$/;"	kind:function	line:2451
 main	../env/lib/python3.7/tokenize.py	/^def main():$/;"	kind:function	line:675
+main	../scripts/get_conll2003.py	/^def main(bioes=True):$/;"	kind:function	line:24
+main	../scripts/version_patch.py	/^def main():$/;"	kind:function	line:7
 make_archive	../env/lib/python3.7/shutil.py	/^def make_archive(base_name, format, root_dir=None, base_dir=None, verbose=0,$/;"	kind:function	line:774
 make_encoding_map	../env/lib/python3.7/codecs.py	/^def make_encoding_map(decoding_map):$/;"	kind:function	line:1061
-make_features	../sequence_tagger.py	/^  def make_features(self, element=None, features=None, training=None):$/;"	kind:member	line:125
 make_identity_dict	../env/lib/python3.7/codecs.py	/^def make_identity_dict(rng):$/;"	kind:function	line:1051
 makedev	../env/lib/python3.7/tarfile.py	/^    def makedev(self, tarinfo, targetpath):$/;"	kind:member	line:2181
 makedir	../env/lib/python3.7/tarfile.py	/^    def makedir(self, tarinfo, targetpath):$/;"	kind:member	line:2139
@@ -3939,7 +3966,6 @@ mappingproxy	../env/lib/python3.7/_collections_abc.py	/^mappingproxy = type(type
 match	../env/lib/python3.7/re.py	/^def match(pattern, string, flags=0):$/;"	kind:function	line:170
 match	../env/lib/python3.7/sre_parse.py	/^    def match(self, char):$/;"	kind:member	line:249
 matmul	../env/lib/python3.7/operator.py	/^def matmul(a, b):$/;"	kind:function	line:108
-max_sequence_length	../test.py	/^    max_sequence_length = 5$/;"	kind:variable	line:111
 maybe	../env/lib/python3.7/tokenize.py	/^def maybe(*choices): return group(*choices) + '?'$/;"	kind:function	line:109
 mbcs.py	../env/lib/python3.7/encodings/mbcs.py	1;"	kind:file	line:1
 merge	../env/lib/python3.7/heapq.py	/^def merge(*iterables, key=None, reverse=False):$/;"	kind:function	line:314
@@ -3949,8 +3975,6 @@ mkstemp	../env/lib/python3.7/tempfile.py	/^def mkstemp(suffix=None, prefix=None,
 mktemp	../env/lib/python3.7/tempfile.py	/^def mktemp(suffix="", prefix=template, dir=None):$/;"	kind:function	line:521
 mod	../env/lib/python3.7/operator.py	/^def mod(a, b):$/;"	kind:function	line:100
 mode	../env/lib/python3.7/tempfile.py	/^    def mode(self):$/;"	kind:member	line:852
-model	../t.py	/^model = tf.keras.Sequential([$/;"	kind:variable	line:5
-model	../test.py	/^    model = TFTagger($/;"	kind:variable	line:115
 module_for_loader	../env/lib/python3.7/importlib/util.py	/^def module_for_loader(fxn):$/;"	kind:function	line:180
 module_for_loader_wrapper	../env/lib/python3.7/importlib/util.py	/^    def module_for_loader_wrapper(self, fullname, *args, **kwargs):$/;"	kind:function	line:201
 module_from_spec	../env/lib/python3.7/importlib/_bootstrap.py	/^def module_from_spec(spec):$/;"	kind:function	line:576
@@ -3966,6 +3990,7 @@ name	../env/lib/python3.7/enum.py	/^    def name(self):$/;"	kind:member	line:624
 name	../env/lib/python3.7/hmac.py	/^    def name(self):$/;"	kind:member	line:96
 name	../env/lib/python3.7/os.py	/^    name = 'nt'$/;"	kind:variable	line:69
 name	../env/lib/python3.7/tempfile.py	/^    def name(self):$/;"	kind:member	line:859
+name	../setup.py	/^    name='tf-tagger',$/;"	kind:variable	line:29
 namedtuple	../env/lib/python3.7/collections/__init__.py	/^def namedtuple(typename, field_names, *, rename=False, defaults=None, module=None):$/;"	kind:function	line:316
 nameprep	../env/lib/python3.7/encodings/idna.py	/^def nameprep(label):$/;"	kind:function	line:14
 namereplace_errors	../env/lib/python3.7/codecs.py	/^    namereplace_errors = None$/;"	kind:variable	line:1098
@@ -4020,9 +4045,9 @@ opengroup	../env/lib/python3.7/sre_parse.py	/^    def opengroup(self, name=None)
 operator.py	../env/lib/python3.7/operator.py	1;"	kind:file	line:1
 opt_flags	../env/bin/python-config	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:33
 opt_flags	../env/lib/python3.7/config-3.7m-x86_64-linux-gnu/python-config.py	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:30
-optimizer	../test.py	/^    optimizer = tf.keras.optimizers.Adam()$/;"	kind:variable	line:122
 or_	../env/lib/python3.7/operator.py	/^def or_(a, b):$/;"	kind:function	line:116
 os.py	../env/lib/python3.7/os.py	1;"	kind:file	line:1
+packages	../setup.py	/^    packages=find_packages(),$/;"	kind:variable	line:38
 palmos.py	../env/lib/python3.7/encodings/palmos.py	1;"	kind:file	line:1
 pardir	../env/lib/python3.7/ntpath.py	/^pardir = '..'$/;"	kind:variable	line:12
 pardir	../env/lib/python3.7/posixpath.py	/^pardir = '..'$/;"	kind:variable	line:17
@@ -4047,12 +4072,12 @@ path_stats	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def path_
 path_stats	../env/lib/python3.7/importlib/abc.py	/^    def path_stats(self, path):$/;"	kind:member	line:321
 pathsep	../env/lib/python3.7/ntpath.py	/^pathsep = ';'$/;"	kind:variable	line:15
 pathsep	../env/lib/python3.7/posixpath.py	/^pathsep = ':'$/;"	kind:variable	line:20
-pbar	../test.py	/^    pbar = tqdm(range(100))$/;"	kind:variable	line:145
 pbkdf2_hmac	../env/lib/python3.7/hashlib.py	/^    def pbkdf2_hmac(hash_name, password, salt, iterations, dklen=None):$/;"	kind:function	line:176
 peek	../env/lib/python3.7/weakref.py	/^    def peek(self):$/;"	kind:member	line:562
 perror	../env/lib/python3.7/tokenize.py	/^    def perror(message):$/;"	kind:function	line:679
 pickle	../env/lib/python3.7/copyreg.py	/^def pickle(ob_type, pickle_function, constructor_ob=None):$/;"	kind:function	line:12
 pickle_complex	../env/lib/python3.7/copyreg.py	/^    def pickle_complex(c):$/;"	kind:function	line:34
+platforms	../setup.py	/^    platforms='any',$/;"	kind:variable	line:40
 pop	../env/lib/python3.7/_collections_abc.py	/^    def pop(self):$/;"	kind:member	line:586
 pop	../env/lib/python3.7/_collections_abc.py	/^    def pop(self, index=-1):$/;"	kind:member	line:992
 pop	../env/lib/python3.7/_collections_abc.py	/^    def pop(self, key, default=__marker):$/;"	kind:member	line:790
@@ -4072,13 +4097,13 @@ pos	../env/lib/python3.7/operator.py	/^def pos(a):$/;"	kind:function	line:120
 pos	../env/lib/python3.7/sre_parse.py	/^    def pos(self):$/;"	kind:member	line:284
 posixpath.py	../env/lib/python3.7/posixpath.py	1;"	kind:file	line:1
 pow	../env/lib/python3.7/operator.py	/^def pow(a, b):$/;"	kind:function	line:124
+predict	../tf_tagger/tf_tagger.py	/^    def predict(self, X, verbose=False, batch_size=None):$/;"	kind:member	line:101
 prepare_class	../env/lib/python3.7/types.py	/^def prepare_class(name, bases=(), kwds=None):$/;"	kind:function	line:93
 prev	../env/bin/activate_this.py	/^prev = set(sys.path)$/;"	kind:variable	line:39
 prf	../env/lib/python3.7/hashlib.py	/^        def prf(msg, inner=inner, outer=outer):$/;"	kind:function	line:201
 print_	../env/lib/python3.7/sre_compile.py	/^        def print_(*args, to=None):$/;"	kind:function	line:624
 print_2	../env/lib/python3.7/sre_compile.py	/^        def print_2(*args):$/;"	kind:function	line:632
 print_function	../env/lib/python3.7/__future__.py	/^print_function = _Feature((2, 6, 0, "alpha", 2),$/;"	kind:variable	line:128
-print_prediction	../sequence_tagger.py	/^  def print_prediction(self, prediction, params=None, stream=None):$/;"	kind:member	line:113
 ptcp154.py	../env/lib/python3.7/encodings/ptcp154.py	1;"	kind:file	line:1
 punycode.py	../env/lib/python3.7/encodings/punycode.py	1;"	kind:file	line:1
 punycode_decode	../env/lib/python3.7/encodings/punycode.py	/^def punycode_decode(text, errors):$/;"	kind:function	line:182
@@ -4200,7 +4225,6 @@ resource_path	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def re
 resource_path	../env/lib/python3.7/importlib/abc.py	/^    def resource_path(self, resource):$/;"	kind:member	line:366
 resource_path	../env/lib/python3.7/importlib/resources.py	/^    def resource_path(self, resource):$/;"	kind:member	line:287
 resources.py	../env/lib/python3.7/importlib/resources.py	1;"	kind:file	line:1
-result	../sequence_tagger.py	/^  def result(self):$/;"	kind:member	line:158
 reverse	../env/lib/python3.7/_collections_abc.py	/^    def reverse(self):$/;"	kind:member	line:981
 reverse	../env/lib/python3.7/collections/__init__.py	/^    def reverse(self): self.data.reverse()$/;"	kind:member	line:1121
 rfind	../env/lib/python3.7/collections/__init__.py	/^    def rfind(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1254
@@ -4224,6 +4248,8 @@ samestat	../env/lib/python3.7/genericpath.py	/^def samestat(s1, s2):$/;"	kind:fu
 sample	../env/lib/python3.7/random.py	/^    def sample(self, population, k):$/;"	kind:member	line:286
 sample	../env/lib/python3.7/random.py	/^sample = _inst.sample$/;"	kind:variable	line:756
 scan	../env/lib/python3.7/re.py	/^    def scan(self, string):$/;"	kind:member	line:347
+score	../tf_tagger/tf_tagger.py	/^    def score(self, X, y, batch_size=None, verbose=0, detail=False):$/;"	kind:member	line:158
+score_table	../tf_tagger/tf_tagger.py	/^    def score_table(self, X, y, batch_size=None, verbose=0):$/;"	kind:member	line:175
 search	../env/lib/python3.7/re.py	/^def search(pattern, string, flags=0):$/;"	kind:function	line:180
 search_function	../env/lib/python3.7/encodings/__init__.py	/^def search_function(encoding):$/;"	kind:function	line:71
 seed	../env/lib/python3.7/random.py	/^    def seed(self, *args, **kwds):$/;"	kind:member	line:691
@@ -4245,7 +4271,6 @@ send	../env/lib/python3.7/_collections_abc.py	/^    def send(self, value):$/;"	k
 send	../env/lib/python3.7/types.py	/^    def send(self, val):$/;"	kind:member	line:207
 sep	../env/lib/python3.7/ntpath.py	/^sep = '\\\\'$/;"	kind:variable	line:14
 sep	../env/lib/python3.7/posixpath.py	/^sep = '\/'$/;"	kind:variable	line:19
-sequence_tagger.py	../sequence_tagger.py	1;"	kind:file	line:1
 setBEGINLIBPATH	../env/lib/python3.7/site.py	/^def setBEGINLIBPATH():$/;"	kind:function	line:355
 set_data	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def set_data(self, path, data):$/;"	kind:member	line:768
 set_data	../env/lib/python3.7/importlib/_bootstrap_external.py	/^    def set_data(self, path, data, *, _mode=0o666):$/;"	kind:member	line:961
@@ -4280,6 +4305,7 @@ setstate	../env/lib/python3.7/encodings/utf_8_sig.py	/^    def setstate(self, st
 setstate	../env/lib/python3.7/random.py	/^    def setstate(self, state):$/;"	kind:member	line:133
 setstate	../env/lib/python3.7/random.py	/^setstate = _inst.setstate$/;"	kind:variable	line:769
 setter	../env/lib/python3.7/types.py	/^    def setter(self, fset):$/;"	kind:member	line:189
+setup.py	../setup.py	1;"	kind:file	line:1
 shift_jis.py	../env/lib/python3.7/encodings/shift_jis.py	1;"	kind:file	line:1
 shift_jis_2004.py	../env/lib/python3.7/encodings/shift_jis_2004.py	1;"	kind:file	line:1
 shift_jisx0213.py	../env/lib/python3.7/encodings/shift_jisx0213.py	1;"	kind:file	line:1
@@ -4287,6 +4313,7 @@ showwarning	../env/lib/python3.7/warnings.py	/^def showwarning(message, category
 shuffle	../env/lib/python3.7/random.py	/^    def shuffle(self, x, random=None):$/;"	kind:member	line:264
 shuffle	../env/lib/python3.7/random.py	/^shuffle = _inst.shuffle$/;"	kind:variable	line:757
 shutil.py	../env/lib/python3.7/shutil.py	1;"	kind:file	line:1
+simple.py	../tf_tagger/test/simple.py	1;"	kind:file	line:1
 simplefilter	../env/lib/python3.7/warnings.py	/^def simplefilter(action, category=Warning, lineno=0, append=False):$/;"	kind:function	line:165
 single_quoted	../env/lib/python3.7/tokenize.py	/^single_quoted = set()$/;"	kind:variable	line:202
 singledispatch	../env/lib/python3.7/functools.py	/^def singledispatch(func):$/;"	kind:function	line:750
@@ -4359,10 +4386,8 @@ sysconfig_get_config_vars	../env/lib/python3.7/distutils/__init__.py	/^def sysco
 sysconfig_get_python_inc	../env/lib/python3.7/distutils/__init__.py	/^def sysconfig_get_python_inc(plat_specific=0, prefix=None):$/;"	kind:function	line:98
 sysconfig_get_python_lib	../env/lib/python3.7/distutils/__init__.py	/^def sysconfig_get_python_lib(plat_specific=0, standard_lib=0, prefix=None):$/;"	kind:function	line:110
 t	../env/lib/python3.7/copy.py	/^t = getattr(types, "CodeType", None)$/;"	kind:variable	line:118
-t.py	../t.py	1;"	kind:file	line:1
 tabsize	../env/lib/python3.7/tokenize.py	/^tabsize = 8$/;"	kind:variable	line:210
-tag_size	../test.py	/^    tag_size = 4$/;"	kind:variable	line:109
-tags	../test.py	/^    tags = tf.random.uniform($/;"	kind:variable	line:138
+tagger_model.py	../tf_tagger/models/tagger_model.py	1;"	kind:file	line:1
 tarfile.py	../env/lib/python3.7/tarfile.py	1;"	kind:file	line:1
 tarinfo	../env/lib/python3.7/tarfile.py	/^    tarinfo = TarInfo           # The default TarInfo class to use.$/;"	kind:variable	line:1409
 taropen	../env/lib/python3.7/tarfile.py	/^    def taropen(cls, name, mode="r", fileobj=None, **kwargs):$/;"	kind:member	line:1616
@@ -4377,7 +4402,12 @@ tempfile.py	../env/lib/python3.7/tempfile.py	1;"	kind:file	line:1
 template	../env/lib/python3.7/re.py	/^def template(pattern, flags=0):$/;"	kind:function	line:241
 template	../env/lib/python3.7/tempfile.py	/^template = "tmp"$/;"	kind:variable	line:206
 test	../env/lib/python3.7/base64.py	/^def test():$/;"	kind:function	line:584
-test.py	../test.py	1;"	kind:file	line:1
+test	../tf_tagger/test/conll2002.py	/^def test():$/;"	kind:function	line:7
+test	../tf_tagger/test/conll2003.py	/^def test():$/;"	kind:function	line:7
+test	../tf_tagger/test/simple.py	/^def test():$/;"	kind:function	line:10
+text_reader	../tf_tagger/utils/text_reader.py	/^def text_reader(path: str) -> Tuple[list, list]:$/;"	kind:function	line:5
+text_reader.py	../tf_tagger/utils/text_reader.py	1;"	kind:file	line:1
+tf_tagger.py	../tf_tagger/tf_tagger.py	1;"	kind:file	line:1
 throw	../env/lib/python3.7/_collections_abc.py	/^    def throw(self, typ, val=None, tb=None):$/;"	kind:member	line:126
 throw	../env/lib/python3.7/_collections_abc.py	/^    def throw(self, typ, val=None, tb=None):$/;"	kind:member	line:327
 throw	../env/lib/python3.7/types.py	/^    def throw(self, tp, *rest):$/;"	kind:member	line:209
@@ -4388,9 +4418,12 @@ tok_name	../env/lib/python3.7/token.py	/^tok_name = {value: name$/;"	kind:variab
 token.py	../env/lib/python3.7/token.py	1;"	kind:file	line:1
 tokenize	../env/lib/python3.7/tokenize.py	/^def tokenize(readline):$/;"	kind:function	line:459
 tokenize.py	../env/lib/python3.7/tokenize.py	1;"	kind:file	line:1
+tokenizer.py	../tf_tagger/utils/tokenizer.py	1;"	kind:file	line:1
 total_ordering	../env/lib/python3.7/functools.py	/^def total_ordering(cls):$/;"	kind:function	line:186
 trans_36	../env/lib/python3.7/hmac.py	/^trans_36 = bytes((x ^ 0x36) for x in range(256))$/;"	kind:variable	line:18
 trans_5C	../env/lib/python3.7/hmac.py	/^trans_5C = bytes((x ^ 0x5C) for x in range(256))$/;"	kind:variable	line:17
+transform	../tf_tagger/utils/label.py	/^    def transform(self, y):$/;"	kind:member	line:27
+transform	../tf_tagger/utils/tokenizer.py	/^    def transform(self, X):$/;"	kind:member	line:23
 translate	../env/lib/python3.7/collections/__init__.py	/^    def translate(self, *args):$/;"	kind:member	line:1276
 translate	../env/lib/python3.7/fnmatch.py	/^def translate(pat):$/;"	kind:function	line:74
 triangular	../env/lib/python3.7/random.py	/^    def triangular(self, low=0.0, high=1.0, mode=None):$/;"	kind:member	line:378
@@ -4420,12 +4453,10 @@ update	../env/lib/python3.7/collections/__init__.py	/^    def update(*args, **kw
 update	../env/lib/python3.7/hmac.py	/^    def update(self, msg):$/;"	kind:member	line:99
 update	../env/lib/python3.7/weakref.py	/^    def update(*args, **kwargs):$/;"	kind:member	line:290
 update	../env/lib/python3.7/weakref.py	/^    def update(self, dict=None, **kwargs):$/;"	kind:member	line:491
-update_metrics	../sequence_tagger.py	/^  def update_metrics(self, metrics, predictions, labels):$/;"	kind:member	line:94
-update_state	../sequence_tagger.py	/^  def update_state(self, y_true, y_pred):  # pylint: disable=arguments-differ$/;"	kind:member	line:153
 update_wrapper	../env/lib/python3.7/functools.py	/^def update_wrapper(wrapper,$/;"	kind:function	line:37
 updatecache	../env/lib/python3.7/linecache.py	/^def updatecache(filename, module_globals=None):$/;"	kind:function	line:82
-updates	../sequence_tagger.py	/^  def updates(self):$/;"	kind:member	line:149
 upper	../env/lib/python3.7/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1278
+url	../setup.py	/^    url='https:\/\/github.com\/deepdialog\/tf-tagger',$/;"	kind:variable	line:35
 urlsafe_b64decode	../env/lib/python3.7/base64.py	/^def urlsafe_b64decode(s):$/;"	kind:function	line:120
 urlsafe_b64encode	../env/lib/python3.7/base64.py	/^def urlsafe_b64encode(s):$/;"	kind:function	line:111
 utf_16.py	../env/lib/python3.7/encodings/utf_16.py	1;"	kind:file	line:1
@@ -4452,9 +4483,10 @@ values	../env/lib/python3.7/collections/__init__.py	/^    def values(self):$/;"	
 values	../env/lib/python3.7/weakref.py	/^    def values(self):$/;"	kind:member	line:244
 values	../env/lib/python3.7/weakref.py	/^    def values(self):$/;"	kind:member	line:458
 version	../env/lib/python3.7/tarfile.py	/^version     = "0.9.0"$/;"	kind:variable	line:32
+version	../setup.py	/^    version=open(VERSION, 'r').read().strip(),$/;"	kind:variable	line:30
+version_patch.py	../scripts/version_patch.py	1;"	kind:file	line:1
 virtual_addsitepackages	../env/lib/python3.7/site.py	/^def virtual_addsitepackages(known_paths):$/;"	kind:function	line:648
 virtual_install_main_packages	../env/lib/python3.7/site.py	/^def virtual_install_main_packages():$/;"	kind:function	line:558
-vocab_size	../test.py	/^    vocab_size = 200$/;"	kind:variable	line:113
 vonmisesvariate	../env/lib/python3.7/random.py	/^    def vonmisesvariate(self, mu, kappa):$/;"	kind:member	line:456
 vonmisesvariate	../env/lib/python3.7/random.py	/^vonmisesvariate = _inst.vonmisesvariate$/;"	kind:variable	line:762
 walk	../env/lib/python3.7/os.py	/^def walk(top, topdown=True, onerror=None, followlinks=False):$/;"	kind:function	line:278
@@ -4486,9 +4518,6 @@ writelines	../env/lib/python3.7/codecs.py	/^    def writelines(self, list):$/;"	
 writelines	../env/lib/python3.7/codecs.py	/^    def writelines(self, list):$/;"	kind:member	line:723
 writelines	../env/lib/python3.7/codecs.py	/^    def writelines(self, list):$/;"	kind:member	line:839
 writelines	../env/lib/python3.7/tempfile.py	/^    def writelines(self, iterable):$/;"	kind:member	line:907
-x	../t.py	/^x = tf.ragged.constant([[3, 1, 4, 1], [], [5, 9, 2], [6], []])$/;"	kind:variable	line:16
-x	../test.py	/^    x = tf.random.uniform($/;"	kind:variable	line:126
-xl	../test.py	/^    xl = tf.random.uniform($/;"	kind:variable	line:132
 xmlcharrefreplace_errors	../env/lib/python3.7/codecs.py	/^    xmlcharrefreplace_errors = None$/;"	kind:variable	line:1096
 xmlcharrefreplace_errors	../env/lib/python3.7/codecs.py	/^    xmlcharrefreplace_errors = lookup_error("xmlcharrefreplace")$/;"	kind:variable	line:1088
 xor	../env/lib/python3.7/operator.py	/^def xor(a, b):$/;"	kind:function	line:140

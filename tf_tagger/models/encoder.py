@@ -9,18 +9,27 @@ import tensorflow_addons as tfa
 
 class Encoder(tf.keras.Model):
 
-    def __init__(self, embedding_size):
+    def __init__(self, embedding_size, hidden_size, layer_size, bidirectional):
         super(Encoder, self).__init__(self)
         inputs = tf.keras.layers.Input(
             shape=(None, embedding_size,),
             dtype=tf.float32)
+        mask = tf.keras.layers.Input(
+            shape=(None,),
+            dtype=tf.bool)
         x = inputs
-        x = tf.keras.layers.Bidirectional(
-            tf.keras.layers.LSTM(embedding_size, return_sequences=True)
-        )(x)
+        for _ in range(layer_size):
+            if bidirectional:
+                l = tf.keras.layers.Bidirectional(
+                    tf.keras.layers.LSTM(
+                        hidden_size // 2, return_sequences=True
+                    )
+                )
+            else:
+                l = tf.keras.layers.LSTM(hidden_size, return_sequences=True)
+            x = l(x, mask=mask)
 
-        self.model = tf.keras.Model(inputs=inputs, outputs=x)
+        self.model = tf.keras.Model(inputs=[inputs, mask], outputs=[x])
 
-    @tf.function
-    def call(self, inputs):
-        return self.model(inputs)
+    def call(self, inputs, mask):
+        return self.model([inputs, mask])
