@@ -5,10 +5,10 @@ import pandas as pd
 import tensorflow as tf
 from tqdm import tqdm
 
-from .models.tagger_model import TaggerModel
-from .utils.extract_entities import extract_entities
-from .utils.label import Label
-from .utils.tokenizer import Tokenizer
+from tf_tagger.models.tagger_model import TaggerModel
+from tf_tagger.utils.extract_entities import extract_entities
+from tf_tagger.utils.label import Label
+from tf_tagger.utils.tokenizer import Tokenizer
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 gpus = tf.config.experimental.list_physical_devices('GPU')
