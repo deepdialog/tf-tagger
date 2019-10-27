@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import pickle
 from appdirs import user_cache_dir

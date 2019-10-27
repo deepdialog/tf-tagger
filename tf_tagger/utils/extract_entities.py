@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 def extract_entities(seq: list, x=None) -> list:
     """Extract entities from a sequences
