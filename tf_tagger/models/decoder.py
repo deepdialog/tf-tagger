@@ -4,7 +4,8 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 import numpy as np
 import tensorflow as tf
-import tensorflow_addons as tfa
+# import tensorflow_addons as tfa
+from .crf import crf_decode, crf_log_likelihood
 
 
 class Decoder(tf.keras.Model):
@@ -28,7 +29,7 @@ class Decoder(tf.keras.Model):
             lengths [B]
         returns: [B, L]
         """
-        tags_id, _ = tfa.text.crf_decode(
+        tags_id, _ = crf_decode(
             inputs, self.transition_params, lengths)
         return tags_id
 
@@ -40,7 +41,7 @@ class Decoder(tf.keras.Model):
             tags [B, L, N]
         returns: loss
         """
-        sequence_log_likelihood, _ = tfa.text.crf_log_likelihood(
+        sequence_log_likelihood, _ = crf_log_likelihood(
             inputs=inputs,
             tag_indices=tags,
             sequence_lengths=lengths,
