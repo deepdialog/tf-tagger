@@ -15,7 +15,7 @@ class EncoderBert(tf.keras.Model):
         super(EncoderBert, self).__init__(self)
 
         bert_params = params_from_pretrained_ckpt(model_dir)
-        bert_params.num_layers = 4
+        # bert_params.num_layers = 4
         l_bert = BertModelLayer.from_params(bert_params, name="bert")
 
         l_input_ids = tf.keras.layers.Input(shape=(max_length,), dtype='int32')

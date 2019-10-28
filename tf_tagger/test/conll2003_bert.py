@@ -26,7 +26,7 @@ def test():
         embedding_size=768,
         hidden_size=768,
         layer_size=2,
-        batch_size=8,
+        batch_size=8 * 2,
         epoch=200,
         bert=True,
         bert_model_dir='./multi_cased_L-12_H-768_A-12',
