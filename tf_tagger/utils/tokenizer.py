@@ -10,13 +10,23 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 
 class Tokenizer:
-    def __init__(self):
+    def __init__(self, vocab_file=None):
         self.word_index = {
             PAD: 0,
             UNK: 1,
             SOS: 2,
             EOS: 3
         }
+        if vocab_file is not None:
+            with open(vocab_file, 'r') as fp:
+                i = 0
+                for line in fp:
+                    if line.endswith('\n'):
+                        line = line[:-1]
+                    if len(line):
+                        self.word_index[line] = i
+                        i += 1
+            self.index_word = {v: k for k, v in self.word_index.items()}
 
     def fit(self, X):
         for sent in X:
@@ -54,3 +64,9 @@ class Tokenizer:
                 vec = vec + [self.word_index[PAD]] * (max_length - len(vec))
             ret.append(vec)
         return np.array(ret, dtype=np.int32)
+
+
+if __name__ == "__main__":
+    tokenizer = Tokenizer('./chinese_L-12_H-768_A-12/vocab.txt')
+    print(tokenizer.transform([['[CLS]', '我', '爱', '你', '[SEP]']]))
+    print(tokenizer.transform([['我', '爱', '你']]))

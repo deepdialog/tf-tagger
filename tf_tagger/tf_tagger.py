@@ -34,7 +34,12 @@ class TFTagger:
                  layer_size=2,
                  dropout=.33,
                  batch_size=32,
-                 epoch=100):
+                 epoch=100,
+                 bert=False,
+                 bert_model_dir=None,
+                 bert_max_length=4096,
+                 bert_vocab_file=None
+                 ):
         self.embedding_size = embedding_size
         self.hidden_size = hidden_size
         self.batch_size = batch_size
@@ -43,21 +48,41 @@ class TFTagger:
         self.dropout = dropout
         self.epoch = epoch
         self.model = None
+        self.bert = bert
+        self.bert_model_dir = bert_model_dir
+        self.bert_max_length = bert_max_length
+        self.bert_vocab_file = bert_vocab_file
 
     def build_model(self):
-        return TaggerModel(embedding_size=self.embedding_size,
-                           hidden_size=self.hidden_size,
-                           vocab_size=self.tokenizer.vocab_size,
-                           tag_size=self.label.label_size,
-                           bidirectional=self.bidirectional,
-                           layer_size=self.layer_size,
-                           dropout=self.dropout)
+        if not self.bert:
+            return TaggerModel(embedding_size=self.embedding_size,
+                            hidden_size=self.hidden_size,
+                            vocab_size=self.tokenizer.vocab_size,
+                            tag_size=self.label.label_size,
+                            bidirectional=self.bidirectional,
+                            layer_size=self.layer_size,
+                            dropout=self.dropout)
+        else:
+            return TaggerModel(
+                embedding_size=self.embedding_size,
+                hidden_size=self.hidden_size,
+                vocab_size=None,
+                tag_size=self.label.label_size,
+                dropout=.0,
+                layer_size=self.layer_size,
+                bidirectional=self.bidirectional,
+                bert=True,
+                bert_model_dir=self.bert_model_dir,
+                bert_max_length=self.bert_max_length)
 
     def fit(self, X, y, X_dev=None, y_dev=None):
         """Model training."""
 
-        tokenizer = Tokenizer()
-        tokenizer.fit(X)
+        if self.bert_vocab_file is not None:
+            tokenizer = Tokenizer(self.bert_vocab_file)
+        else:
+            tokenizer = Tokenizer()
+            tokenizer.fit(X)
         self.tokenizer = tokenizer
 
         label = Label()

@@ -7,10 +7,10 @@ from sklearn.preprocessing import LabelEncoder
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 
-PAD = '<PAD>'
-SOS = '<SOS>'
-EOS = '<EOS>'
-UNK = '<UNK>'
+PAD = '[PAD]'
+SOS = '[CLS]'
+EOS = '[SEP]'
+UNK = '[UNK]'
 
 
 class Label:
@@ -49,9 +49,10 @@ class Label:
         return np.array(ret)
 
     def inverse_transform(self, y):
+        # import pdb; pdb.set_trace()
         return [
             [
-                self.index_tag[yyy]
+                self.index_tag[yyy] if yyy in self.index_tag else UNK
                 for yyy in yy
             ]
             for yy in y

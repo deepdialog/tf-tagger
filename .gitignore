@@ -4,3 +4,5 @@ env
 build
 dist
 *.egg-info
+chinese_L-12_H-768_A-12
+multi_cased_L-12_H-768_A-12
