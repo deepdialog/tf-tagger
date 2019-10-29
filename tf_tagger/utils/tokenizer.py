@@ -27,6 +27,7 @@ class Tokenizer:
                         self.word_index[line] = i
                         i += 1
             self.index_word = {v: k for k, v in self.word_index.items()}
+            self.vocab_size = len(self.word_index)
 
     def fit(self, X):
         for sent in X:

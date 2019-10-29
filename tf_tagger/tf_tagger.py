@@ -37,7 +37,7 @@ class TFTagger:
                  vocab_file=None,
                  bert=False,
                  bert_model_dir=None,
-                 bert_max_length=4096,
+                 bert_max_length=1024,
                  bert_params=None,
                  bert_num_layers=None,
                  bert_trainable=False):
