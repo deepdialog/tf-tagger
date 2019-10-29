@@ -4,12 +4,11 @@ import os
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-from tqdm import tqdm
-
 from tf_tagger.models.tagger_model import TaggerModel
 from tf_tagger.utils.extract_entities import extract_entities
 from tf_tagger.utils.label import Label
 from tf_tagger.utils.tokenizer import Tokenizer
+from tqdm import tqdm
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -19,11 +18,13 @@ if gpus:
         for gpu in gpus:
             tf.config.experimental.set_memory_growth(gpu, True)
             logical_gpus = tf.config.experimental.list_logical_devices('GPU')
-            print(len(gpus), "Physical GPUs,", len(logical_gpus),
-                  "Logical GPUs")
+            print('tf-tagger in GPU mode,', len(gpus), "Physical GPUs,",
+                  len(logical_gpus), "Logical GPUs")
     except RuntimeError as e:
         # Memory growth must be set before GPUs have been initialized
         print(e)
+else:
+    print('tf-tagger in CPU mode')
 
 
 class TFTagger:
@@ -35,11 +36,13 @@ class TFTagger:
                  dropout=.33,
                  batch_size=32,
                  epoch=100,
+                 vocab_file=None,
                  bert=False,
                  bert_model_dir=None,
                  bert_max_length=4096,
-                 bert_vocab_file=None
-                 ):
+                 bert_params=None,
+                 bert_num_layers=None,
+                 bert_trainable=False):
         self.embedding_size = embedding_size
         self.hidden_size = hidden_size
         self.batch_size = batch_size
@@ -48,46 +51,56 @@ class TFTagger:
         self.dropout = dropout
         self.epoch = epoch
         self.model = None
+        self.vocab_file = vocab_file
         self.bert = bert
         self.bert_model_dir = bert_model_dir
         self.bert_max_length = bert_max_length
-        self.bert_vocab_file = bert_vocab_file
+        self.bert_params = bert_params
+        self.bert_num_layers = bert_num_layers
+        self.bert_trainable = bert_trainable
+
+        self.tokenizer = None
+        self.label is None
 
     def build_model(self):
         if not self.bert:
             return TaggerModel(embedding_size=self.embedding_size,
-                            hidden_size=self.hidden_size,
-                            vocab_size=self.tokenizer.vocab_size,
-                            tag_size=self.label.label_size,
-                            bidirectional=self.bidirectional,
-                            layer_size=self.layer_size,
-                            dropout=self.dropout)
+                               hidden_size=self.hidden_size,
+                               vocab_size=self.tokenizer.vocab_size,
+                               tag_size=self.label.label_size,
+                               bidirectional=self.bidirectional,
+                               layer_size=self.layer_size,
+                               dropout=self.dropout)
         else:
-            return TaggerModel(
-                embedding_size=self.embedding_size,
-                hidden_size=self.hidden_size,
-                vocab_size=None,
-                tag_size=self.label.label_size,
-                dropout=.0,
-                layer_size=self.layer_size,
-                bidirectional=self.bidirectional,
-                bert=True,
-                bert_model_dir=self.bert_model_dir,
-                bert_max_length=self.bert_max_length)
+            return TaggerModel(embedding_size=self.embedding_size,
+                               hidden_size=self.hidden_size,
+                               vocab_size=None,
+                               tag_size=self.label.label_size,
+                               dropout=.0,
+                               layer_size=self.layer_size,
+                               bidirectional=self.bidirectional,
+                               bert=True,
+                               bert_model_dir=self.bert_model_dir,
+                               bert_max_length=self.bert_max_length,
+                               bert_params=self.bert_params,
+                               bert_num_layers=self.bert_num_layers,
+                               bert_trainable=self.bert_trainable)
 
     def fit(self, X, y, X_dev=None, y_dev=None):
         """Model training."""
 
-        if self.bert_vocab_file is not None:
-            tokenizer = Tokenizer(self.bert_vocab_file)
-        else:
-            tokenizer = Tokenizer()
-            tokenizer.fit(X)
-        self.tokenizer = tokenizer
+        if self.tokenizer is None:
+            if self.vocab_file is not None:
+                tokenizer = Tokenizer(self.vocab_file)
+            else:
+                tokenizer = Tokenizer()
+                tokenizer.fit(X)
+            self.tokenizer = tokenizer
 
-        label = Label()
-        label.fit(y)
-        self.label = label
+        if self.label is None:
+            label = Label()
+            label.fit(y)
+            self.label = label
 
         if self.model is None:
             model = self.build_model()
@@ -96,8 +109,6 @@ class TFTagger:
             model = self.model
 
         optimizer = tf.keras.optimizers.Adam()
-
-        # optimizer = tf.keras.optimizers.SGD(.015)
 
         def gendata(X, y, batch_size):
 

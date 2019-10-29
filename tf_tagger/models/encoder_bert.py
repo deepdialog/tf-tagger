@@ -11,21 +11,26 @@ from bert import load_stock_weights
 
 class EncoderBert(tf.keras.Model):
 
-    def __init__(self, max_length=4096, model_dir=None):
+    def __init__(self, max_length=4096, bert_params=None, model_dir=None, num_layers=None, trainable=False):
         super(EncoderBert, self).__init__(self)
 
-        bert_params = params_from_pretrained_ckpt(model_dir)
-        # bert_params.num_layers = 4
+        assert isinstance(max_length, int)
+        assert bert_params is not None or model_dir is not None
+
+        if bert_params is None:
+            assert os.path.exists(model_dir)
+            bert_params = params_from_pretrained_ckpt(model_dir)
+        if isinstance(num_layers, int):
+            bert_params.num_layers = num_layers
+
         l_bert = BertModelLayer.from_params(bert_params, name="bert")
 
         l_input_ids = tf.keras.layers.Input(shape=(max_length,), dtype='int32')
-        l_token_type_ids = tf.keras.layers.Input(shape=(max_length,), dtype='int32')
 
-        # using the default token_type/segment id 0
         output = l_bert(l_input_ids)
         model = tf.keras.Model(inputs=l_input_ids, outputs=output)
         model.build(input_shape=(None, max_length))
-        model.trainable = False
+        model.trainable = trainable
         self.model = model
 
         if model_dir is not None:
