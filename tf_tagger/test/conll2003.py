@@ -4,6 +4,7 @@ import pickle
 from appdirs import user_cache_dir
 from ..tf_tagger import TFTagger
 from ..utils.text_reader import text_reader
+from .get_conll2003 import main as get_conll2003
 
 
 def test():
@@ -19,18 +20,21 @@ def test():
         ]
     ]
 
+    if not os.path.exists(train_path):
+        get_conll2003()
+
     x_train, y_train = text_reader(train_path)
+    x_dev, y_dev = text_reader(dev_path)
     x_test, y_test = text_reader(test_path)
 
     it = TFTagger(
-        batch_size=64,
-        embedding_size=300,
-        hidden_size=300,
-        layer_size=3,
-        epoch=200
+        embedding_size=200,
+        hidden_size=200,
+        layer_size=2
     )
 
-    it.fit(x_train, y_train, x_test, y_test)
+    save_best='/tmp/conll2003.pkl'
+    it.fit(x_train, y_train, x_dev, y_dev, batch_size=256, save_best=save_best)
     pred = it.predict(x_test, verbose=True)
     print(pred[:3])
     print(it.score_table(x_test, y_test))

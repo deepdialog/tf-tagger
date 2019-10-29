@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-
+import pickle
 import numpy as np
 import pandas as pd
 import tensorflow as tf
@@ -34,8 +34,6 @@ class TFTagger:
                  bidirectional=True,
                  layer_size=2,
                  dropout=.33,
-                 batch_size=32,
-                 epoch=100,
                  vocab_file=None,
                  bert=False,
                  bert_model_dir=None,
@@ -45,11 +43,9 @@ class TFTagger:
                  bert_trainable=False):
         self.embedding_size = embedding_size
         self.hidden_size = hidden_size
-        self.batch_size = batch_size
         self.bidirectional = bidirectional
         self.layer_size = layer_size
         self.dropout = dropout
-        self.epoch = epoch
         self.model = None
         self.vocab_file = vocab_file
         self.bert = bert
@@ -61,6 +57,7 @@ class TFTagger:
 
         self.tokenizer = None
         self.label = None
+        self.batch_size = 32
 
     def build_model(self):
         if not self.bert:
@@ -86,8 +83,13 @@ class TFTagger:
                                bert_num_layers=self.bert_num_layers,
                                bert_trainable=self.bert_trainable,)
 
-    def fit(self, X, y, X_dev=None, y_dev=None):
+    def fit(self, X, y, X_dev=None, y_dev=None, batch_size=None, epoch=100, save_best=None):
         """Model training."""
+
+        if batch_size is None:
+            batch_size = self.batch_size
+        else:
+            self.batch_size = batch_size
 
         if self.tokenizer is None:
             if self.vocab_file is not None:
@@ -112,11 +114,11 @@ class TFTagger:
 
         def gendata(X, y, batch_size):
 
-            lengths = [(i, len(x)) for i, x in enumerate(X)]
-            lengths = sorted(lengths, key=lambda x: x[1], reverse=True)
-            lengths = [x[0] for x in lengths]
-            X = [X[i] for i in lengths]
-            y = [y[i] for i in lengths]
+            pos_lengths = [(i, len(x)) for i, x in enumerate(X)]
+            pos_lengths = sorted(pos_lengths, key=lambda x: x[1], reverse=True)
+            pos = [x[0] for x in pos_lengths]
+            X = [X[i] for i in pos]
+            y = [y[i] for i in pos]
             total_batch = int(np.ceil(len(X) / batch_size))
             points = list(range(total_batch))
             np.random.shuffle(points)
@@ -128,10 +130,11 @@ class TFTagger:
                 tags = label.transform(y[i_min:i_max])
                 yield x, tags
 
-        for i_epoch in range(self.epoch):
+        last_best = None
+        for i_epoch in range(epoch):
 
-            total_batch = int(np.ceil(len(X) / self.batch_size))
-            pbar = tqdm(gendata(X, y, self.batch_size),
+            total_batch = int(np.ceil(len(X) / batch_size))
+            pbar = tqdm(gendata(X, y, batch_size),
                         total=total_batch,
                         ncols=0)
             pbar.set_description(f'epoch: {i_epoch} loss: -')
@@ -139,8 +142,6 @@ class TFTagger:
 
             for x, tags in pbar:
                 with tf.GradientTape() as tape:
-                    x = tf.convert_to_tensor(x, dtype=tf.int32)
-                    tags = tf.convert_to_tensor(tags, dtype=tf.int32)
                     loss = model.compute_loss(x, tags)
                     gradients = tape.gradient(loss, model.trainable_variables)
                 optimizer.apply_gradients(
@@ -150,15 +151,29 @@ class TFTagger:
                 pbar.set_description(
                     f'epoch: {i_epoch} loss: {np.mean(losses):.4f}')
             if X_dev is not None and y_dev is not None:
-                # print('evaluate train data')
-                # print(self.score_table(X, y, verbose=1))
                 print('evaluate dev data')
-                print(self.score_table(X_dev, y_dev, verbose=1))
+                table = self.score_table(X_dev, y_dev, verbose=1)
+                print(table)
+                if save_best is not None:
+                    f1 = table.iloc[-1]['f1score']
+                    if last_best is None or f1 > last_best:
+                        last_best = f1
+                        print('save_best to:', save_best)
+                        with open(save_best, 'wb') as fp:
+                            pickle.dump(self, fp)
+                    else:
+                        print(f'save_best to: no better {f1} < {last_best}')
 
     def predict(self, X, verbose=False, batch_size=None):
         """Predict label."""
         assert self.model is not None, 'Intent not fit'
         batch_size = batch_size or self.batch_size
+
+        pos_lengths = [(i, len(x)) for i, x in enumerate(X)]
+        pos_lengths = sorted(pos_lengths, key=lambda x: x[1], reverse=True)
+        pos = [x[0] for x in pos_lengths]
+        X = [X[i] for i in pos]
+
         total_batch = int(np.ceil(len(X) / batch_size))
         pbar = range(total_batch)
         if verbose:
@@ -168,13 +183,15 @@ class TFTagger:
             i_min = i * batch_size
             i_max = min((i + 1) * batch_size, len(X))
             x = self.tokenizer.transform(X[i_min:i_max])
-            x = tf.convert_to_tensor(x, dtype=tf.int32)
             x = self.model(x)
             x = x.numpy()
             ret += self.label.inverse_transform(x)
         for i in range(len(ret)):
             ret[i] = ret[i][1:1 + len(X[i])]
-        return ret
+        ordered_ret = [None] * len(ret)
+        for p, r in zip(pos, ret):
+            ordered_ret[p] = r
+        return ordered_ret
 
     def __getstate__(self):
         """Pickle compatible."""

@@ -220,8 +220,8 @@ def crf_unary_score(tag_indices, sequence_lengths, inputs):
     offsets = tf.expand_dims(tf.range(batch_size) * max_seq_len * num_tags, 1)
     offsets += tf.expand_dims(tf.range(max_seq_len) * num_tags, 0)
     # Use int32 or int64 based on tag_indices' dtype.
-    if tag_indices.dtype == tf.int64:
-        offsets = tf.cast(offsets, tf.int64)
+    # if tag_indices.dtype == tf.int64:
+    #     offsets = tf.cast(offsets, tf.int64)
     flattened_tag_indices = tf.reshape(offsets + tag_indices, [-1])
 
     unary_scores = tf.reshape(

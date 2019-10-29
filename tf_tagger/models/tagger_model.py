@@ -30,7 +30,10 @@ class TaggerModel(tf.keras.Model):
         if bert:
             self.emb = EncoderBert(
                 max_length=bert_max_length,
-                model_dir=bert_model_dir
+                model_dir=bert_model_dir,
+                bert_params=bert_params,
+                num_layers=bert_num_layers,
+                trainable=bert_trainable
             )
         else:
             self.emb = Embed(

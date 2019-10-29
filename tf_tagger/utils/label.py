@@ -46,7 +46,7 @@ class Label:
             if len(vec) < max_length:
                 vec += [self.tag_index[PAD]] * (max_length - len(vec))
             ret.append(vec)
-        return np.array(ret)
+        return np.array(ret, dtype=np.int32)
 
     def inverse_transform(self, y):
         # import pdb; pdb.set_trace()
