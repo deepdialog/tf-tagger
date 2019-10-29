@@ -98,11 +98,15 @@ class TFTagger:
                 tokenizer = Tokenizer()
                 tokenizer.fit(X)
             self.tokenizer = tokenizer
+        else:
+            tokenizer = self.tokenizer
 
         if self.label is None:
             label = Label()
             label.fit(y)
             self.label = label
+        else:
+            label = self.label
 
         if self.model is None:
             model = self.build_model()
