@@ -60,7 +60,7 @@ class TFTagger:
         self.bert_trainable = bert_trainable
 
         self.tokenizer = None
-        self.label is None
+        self.label = None
 
     def build_model(self):
         if not self.bert:
