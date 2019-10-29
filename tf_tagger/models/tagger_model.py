@@ -21,7 +21,10 @@ class TaggerModel(tf.keras.Model):
                  bidirectional,
                  bert=False,
                  bert_model_dir=None,
-                 bert_max_length=4096):
+                 bert_max_length=4096,
+                 bert_params=None,
+                 bert_num_layers=None,
+                 bert_trainable=False):
         super(TaggerModel, self).__init__(self)
         self.bert = bert
         if bert:

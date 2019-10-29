@@ -11,7 +11,7 @@ from bert import load_stock_weights
 
 class EncoderBert(tf.keras.Model):
 
-    def __init__(self, max_length=4096, bert_params=None, model_dir=None, num_layers=None, trainable=False):
+    def __init__(self, model_dir=None, max_length=4096, bert_params=None, num_layers=None, trainable=False):
         super(EncoderBert, self).__init__(self)
 
         assert isinstance(max_length, int)

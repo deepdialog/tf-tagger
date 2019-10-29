@@ -84,7 +84,7 @@ class TFTagger:
                                bert_max_length=self.bert_max_length,
                                bert_params=self.bert_params,
                                bert_num_layers=self.bert_num_layers,
-                               bert_trainable=self.bert_trainable)
+                               bert_trainable=self.bert_trainable,)
 
     def fit(self, X, y, X_dev=None, y_dev=None):
         """Model training."""
