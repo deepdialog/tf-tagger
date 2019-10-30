@@ -21,7 +21,8 @@ class Encoder(tf.keras.Model):
             if bidirectional:
                 l = tf.keras.layers.Bidirectional(
                     tf.keras.layers.LSTM(
-                        hidden_size // 2, return_sequences=True
+                        hidden_size // 2, return_sequences=True,
+                        recurrent_dropout=.25
                     )
                 )
             else:

@@ -14,17 +14,12 @@ UNK = '[UNK]'
 
 
 class Label:
-    def __init__(self):
-        pass
 
     def fit(self, y):
-        # label = LabelEncoder()
         tags = []
         for yy in y:
             tags += yy
         tags = sorted(set(tags))
-        # label.fit([PAD, SOS, EOS] + tags)
-        # self.label = label
         self.classes = [PAD, SOS, EOS] + tags
         self.tag_index = {}
         for i, t in enumerate(self.classes):
@@ -36,23 +31,20 @@ class Label:
         self.label_size = len(self.classes)
 
     def transform(self, y):
+        batch_size = len(y)
         max_length = int(np.max([len(yy) for yy in y])) + 2
-        ret = []
-        for yy in y:
-            vec = [self.tag_index[SOS]]
-            for yyy in yy:
-                vec.append(self.tag_index[yyy])
-            vec.append(self.tag_index[EOS])
-            if len(vec) < max_length:
-                vec += [self.tag_index[PAD]] * (max_length - len(vec))
-            ret.append(vec)
-        return np.array(ret, dtype=np.int32)
+        result = np.zeros((batch_size, max_length), dtype=np.int32)
+        for sent_id, sent in enumerate(y):
+            result[sent_id][0] = self.tag_index[SOS]
+            for word_id, word in enumerate(sent):
+                result[sent_id][word_id + 1] = self.tag_index[word]
+            result[sent_id][len(sent) + 1] = self.tag_index[EOS]
+        return result
 
     def inverse_transform(self, y):
-        # import pdb; pdb.set_trace()
         return [
             [
-                self.index_tag[yyy] if yyy in self.index_tag else UNK
+                self.index_tag.get(yyy, UNK)
                 for yyy in yy
             ]
             for yy in y

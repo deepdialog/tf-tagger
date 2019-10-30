@@ -17,7 +17,14 @@ class Tokenizer:
             SOS: 2,
             EOS: 3
         }
-        if vocab_file is not None:
+        if isinstance(vocab_file, (list, tuple)):
+            self.word_index = {}
+            for i, w in enumerate(vocab_file):
+                self.word_index[w] = i
+            self.index_word = {v: k for k, v in self.word_index.items()}
+            self.vocab_size = len(self.word_index)
+        elif isinstance(vocab_file, str):
+            self.word_index = {}
             with open(vocab_file, 'r') as fp:
                 i = 0
                 for line in fp:
@@ -50,21 +57,15 @@ class Tokenizer:
         return ret
 
     def transform(self, X):
+        batch_size = len(X)
         max_length = max([len(x) for x in X]) + 2
-        ret = []
-        for sent in X:
-            vec = []
-            vec.append(self.word_index[SOS])
-            for word in sent:
-                if word in self.word_index:
-                    vec.append(self.word_index[word])
-                else:
-                    vec.append(self.word_index[UNK])
-            vec.append(self.word_index[EOS])
-            if len(vec) < max_length:
-                vec = vec + [self.word_index[PAD]] * (max_length - len(vec))
-            ret.append(vec)
-        return np.array(ret, dtype=np.int32)
+        result = np.zeros((batch_size, max_length), dtype=np.int32)
+        for sent_id, sent in enumerate(X):
+            result[sent_id][0] = self.word_index[SOS]
+            for word_id, word in enumerate(sent):
+                result[sent_id][word_id + 1] = self.word_index.get(word, self.word_index[UNK])
+            result[sent_id][len(sent) + 1] = self.word_index[EOS]
+        return result
 
 
 if __name__ == "__main__":

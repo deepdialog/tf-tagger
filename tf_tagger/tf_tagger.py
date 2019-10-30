@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 import os
 import pickle
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+from tqdm import tqdm
+
 from tf_tagger.models.tagger_model import TaggerModel
+from tf_tagger.utils.char_tokenizer import CharTokenizer
 from tf_tagger.utils.extract_entities import extract_entities
 from tf_tagger.utils.label import Label
 from tf_tagger.utils.tokenizer import Tokenizer
-from tqdm import tqdm
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -34,13 +37,19 @@ class TFTagger:
                  bidirectional=True,
                  layer_size=2,
                  dropout=.33,
+                 embedding_weights=None,
+                 embedding_trainable=True,
                  vocab_file=None,
                  bert=False,
                  bert_model_dir=None,
                  bert_max_length=1024,
                  bert_params=None,
                  bert_num_layers=None,
-                 bert_trainable=False):
+                 bert_trainable=False,
+                 use_char=False,
+                 char_embedding_size=30,
+                 max_word_length=50,
+                 char_hidden_size=50):
         self.embedding_size = embedding_size
         self.hidden_size = hidden_size
         self.bidirectional = bidirectional
@@ -54,7 +63,14 @@ class TFTagger:
         self.bert_params = bert_params
         self.bert_num_layers = bert_num_layers
         self.bert_trainable = bert_trainable
+        self.embedding_weights = embedding_weights
+        self.embedding_trainable = embedding_trainable
+        self.use_char = use_char
+        self.char_embedding_size = char_embedding_size
+        self.max_word_length = max_word_length
+        self.char_hidden_size = char_hidden_size
 
+        self.char_tokenizer = CharTokenizer(max_word_length=max_word_length)
         self.tokenizer = None
         self.label = None
         self.batch_size = 32
@@ -67,7 +83,14 @@ class TFTagger:
                                tag_size=self.label.label_size,
                                bidirectional=self.bidirectional,
                                layer_size=self.layer_size,
-                               dropout=self.dropout)
+                               dropout=self.dropout,
+                               embedding_weights=self.embedding_weights,
+                               embedding_trainable=self.embedding_trainable,
+                               use_char=self.use_char,
+                               char_vocab_size=self.char_tokenizer.vocab_size,
+                               char_embedding_size=self.char_embedding_size,
+                               max_word_length=self.max_word_length,
+                               char_hidden_size=self.char_hidden_size)
         else:
             return TaggerModel(embedding_size=self.embedding_size,
                                hidden_size=self.hidden_size,
@@ -81,9 +104,21 @@ class TFTagger:
                                bert_max_length=self.bert_max_length,
                                bert_params=self.bert_params,
                                bert_num_layers=self.bert_num_layers,
-                               bert_trainable=self.bert_trainable,)
+                               bert_trainable=self.bert_trainable,
+                               use_char=self.use_char,
+                               char_vocab_size=self.char_tokenizer.vocab_size,
+                               char_embedding_size=self.char_embedding_size,
+                               max_word_length=self.max_word_length,
+                               char_hidden_size=self.char_hidden_size)
 
-    def fit(self, X, y, X_dev=None, y_dev=None, batch_size=None, epoch=100, save_best=None):
+    def fit(self,
+            X,
+            y,
+            X_dev=None,
+            y_dev=None,
+            batch_size=None,
+            epoch=100,
+            save_best=None):
         """Model training."""
 
         if batch_size is None:
@@ -114,7 +149,9 @@ class TFTagger:
         else:
             model = self.model
 
-        optimizer = tf.keras.optimizers.Adam()
+        # optimizer = tf.keras.optimizers.Adam()
+        # optimizer = tf.keras.optimizers.Nadam()
+        optimizer = tf.keras.optimizers.SGD(0.005, momentum=0.9)
 
         def gendata(X, y, batch_size):
 
@@ -132,22 +169,32 @@ class TFTagger:
                 i_max = min((i + 1) * batch_size, len(X))
                 x = tokenizer.transform(X[i_min:i_max])
                 tags = label.transform(y[i_min:i_max])
-                yield x, tags
+                xc = None
+                if self.use_char:
+                    xc = self.char_tokenizer.transform(X[i_min:i_max])
+                yield x, tags, xc
 
         last_best = None
         for i_epoch in range(epoch):
 
             total_batch = int(np.ceil(len(X) / batch_size))
-            pbar = tqdm(gendata(X, y, batch_size),
-                        total=total_batch,
-                        ncols=0)
+            pbar = tqdm(gendata(X, y, batch_size), total=total_batch, ncols=0)
             pbar.set_description(f'epoch: {i_epoch} loss: -')
             losses = []
 
-            for x, tags in pbar:
+            for x, tags, xc in pbar:
                 with tf.GradientTape() as tape:
-                    loss = model.compute_loss(x, tags)
+                    loss = model.compute_loss(x, tags, xc)
                     gradients = tape.gradient(loss, model.trainable_variables)
+                    gradients = [
+                        tf.clip_by_value(g, -5.0, 5.0) if g is not None else g
+                        for g in gradients
+                    ]
+                    gradients = [
+                        tf.clip_by_norm(g, 1.) if g is not None else g
+                        for g in gradients
+                    ]
+
                 optimizer.apply_gradients(
                     zip(gradients, model.trainable_variables))
                 loss = loss.numpy().sum()
@@ -166,7 +213,8 @@ class TFTagger:
                         with open(save_best, 'wb') as fp:
                             pickle.dump(self, fp)
                     else:
-                        print(f'save_best to: no better {f1} < {last_best}')
+                        print('save_best to: no better '
+                              f'{f1:.4f} < {last_best:.4f}')
 
     def predict(self, X, verbose=False, batch_size=None):
         """Predict label."""
@@ -187,7 +235,10 @@ class TFTagger:
             i_min = i * batch_size
             i_max = min((i + 1) * batch_size, len(X))
             x = self.tokenizer.transform(X[i_min:i_max])
-            x = self.model(x)
+            xc = None
+            if self.use_char:
+                xc = self.char_tokenizer.transform(X[i_min:i_max])
+            x = self.model(x, char_inputs=xc)
             x = x.numpy()
             ret += self.label.inverse_transform(x)
         for i in range(len(ret)):

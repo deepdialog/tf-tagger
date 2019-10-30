@@ -28,16 +28,18 @@ def test():
     x_test, y_test = text_reader(test_path)
 
     it = TFTagger(
-        embedding_size=200,
-        hidden_size=200,
-        layer_size=2
+        embedding_size=100,
+        hidden_size=600,
+        layer_size=1,
+        dropout=0.2
     )
 
-    save_best='/tmp/conll2003.pkl'
-    it.fit(x_train, y_train, x_dev, y_dev, batch_size=256, save_best=save_best)
-    pred = it.predict(x_test, verbose=True)
-    print(pred[:3])
+    save_best = '/tmp/conll2003.pkl'
+    it.fit(x_train, y_train, x_dev, y_dev, batch_size=10, save_best=save_best, epoch=30)
     print(it.score_table(x_test, y_test))
+    with open(save_best, 'rb') as fp:
+        it = pickle.load(fp)
+        print(it.score_table(x_test, y_test))
 
 
 if __name__ == '__main__':

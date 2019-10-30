@@ -23,7 +23,7 @@ URLS = [
 ]
 
 
-def main(bioes=True):
+def main(bioes=False):
     """Download CONLL2003 data and convert it to BIOES format
     B: begin
     I: inner

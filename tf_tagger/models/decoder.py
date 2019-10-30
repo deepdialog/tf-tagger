@@ -12,10 +12,9 @@ class Decoder(tf.keras.Model):
     def __init__(self, tag_size):
         super(Decoder, self).__init__(self)
         self.tag_size = tag_size
-        w_init = tf.random_normal_initializer()
-        # w_init = tf.constant_initializer(0.0)
+        initializer = tf.keras.initializers.GlorotUniform()
         self.transition_params = tf.Variable(
-            initial_value=w_init(
+            initial_value=initializer(
                 shape=(tag_size, tag_size),
                 dtype=tf.dtypes.float32),
             name='crf/transition_params'
