@@ -22,6 +22,9 @@ class EncoderBert(tf.keras.Model):
             bert_params = params_from_pretrained_ckpt(model_dir)
         if isinstance(num_layers, int):
             bert_params.num_layers = num_layers
+    
+        if bert_params.max_position_embeddings < max_length:
+            bert_params.max_position_embeddings = max_length
 
         l_bert = BertModelLayer.from_params(bert_params, name="bert")
 
