@@ -49,7 +49,9 @@ class TFTagger:
                  use_char=False,
                  char_embedding_size=30,
                  max_word_length=50,
-                 char_hidden_size=50):
+                 char_hidden_size=50,
+                 learning_rate=None,
+                 optimizer='Adam'):
         self.embedding_size = embedding_size
         self.hidden_size = hidden_size
         self.bidirectional = bidirectional
@@ -69,6 +71,8 @@ class TFTagger:
         self.char_embedding_size = char_embedding_size
         self.max_word_length = max_word_length
         self.char_hidden_size = char_hidden_size
+        self.optimizer = optimizer
+        self.learning_rate = learning_rate
 
         self.char_tokenizer = CharTokenizer(max_word_length=max_word_length)
         self.tokenizer = None
@@ -149,9 +153,24 @@ class TFTagger:
         else:
             model = self.model
 
-        # optimizer = tf.keras.optimizers.Adam()
-        # optimizer = tf.keras.optimizers.Nadam()
-        optimizer = tf.keras.optimizers.SGD(0.005, momentum=0.9)
+        if self.learning_rate is not None:
+            if self.optimizer.lower() == 'sgd':
+                optimizer = tf.keras.optimizers.SGD(self.learning_rate, momentum=0.9)
+            elif self.optimizer.lower() == 'nadam':
+                optimizer = tf.keras.optimizers.Nadam(self.learning_rate)
+            elif self.optimizer.lower() == 'rmsprop':
+                optimizer = tf.keras.optimizers.RMSprop(self.learning_rate)
+            else:
+                optimizer = tf.keras.optimizers.Adam(self.learning_rate)
+        else:
+            if self.optimizer.lower() == 'sgd':
+                optimizer = tf.keras.optimizers.SGD(momentum=0.9)
+            elif self.optimizer.lower() == 'nadam':
+                optimizer = tf.keras.optimizers.Nadam()
+            elif self.optimizer.lower() == 'rmsprop':
+                optimizer = tf.keras.optimizers.RMSprop()
+            else:
+                optimizer = tf.keras.optimizers.Adam()
 
         def gendata(X, y, batch_size):
 
