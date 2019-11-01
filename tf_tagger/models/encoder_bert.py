@@ -34,7 +34,6 @@ class EncoderBert(tf.keras.Model):
         model = tf.keras.Model(inputs=l_input_ids, outputs=output)
         model.build(input_shape=(None, max_length))
         l_bert.embeddings_layer.trainable = trainable # True for unfreezing emb LayerNorm
-        # model.trainable = trainable
         
         self.model = model
 
