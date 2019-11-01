@@ -27,13 +27,13 @@ class EncoderBert(tf.keras.Model):
             bert_params.max_position_embeddings = max_length
 
         l_bert = BertModelLayer.from_params(bert_params, name="bert")
-        l_bert.embeddings_layer.trainable = trainable # True for unfreezing emb LayerNorm
 
         l_input_ids = tf.keras.layers.Input(shape=(max_length,), dtype='int32')
 
         output = l_bert(l_input_ids)
         model = tf.keras.Model(inputs=l_input_ids, outputs=output)
         model.build(input_shape=(None, max_length))
+        l_bert.embeddings_layer.trainable = trainable # True for unfreezing emb LayerNorm
         # model.trainable = trainable
         
         self.model = model
