@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from tqdm import tqdm
+from bert import params_from_pretrained_ckpt
 
 from tf_tagger.models.tagger_model import TaggerModel
 from tf_tagger.utils.char_tokenizer import CharTokenizer
@@ -52,6 +53,12 @@ class TFTagger:
                  char_hidden_size=50,
                  learning_rate=None,
                  optimizer='Adam'):
+
+        if bert:
+            assert bert_params is not None or bert_model_dir is not None
+            if bert_params is None:
+                self.bert_params = params_from_pretrained_ckpt(bert_model_dir)
+
         self.embedding_size = embedding_size
         self.hidden_size = hidden_size
         self.bidirectional = bidirectional
@@ -62,7 +69,7 @@ class TFTagger:
         self.bert = bert
         self.bert_model_dir = bert_model_dir
         self.bert_max_length = bert_max_length
-        self.bert_params = bert_params
+        # self.bert_params = bert_params
         self.bert_num_layers = bert_num_layers
         self.bert_trainable = bert_trainable
         self.embedding_weights = embedding_weights
@@ -280,6 +287,7 @@ class TFTagger:
         if 'model_weights' in state:
             model_weights = state.get('model_weights')
             del state['model_weights']
+            state['bert_model_dir'] = None
             self.__dict__.update(state)
             self.model = self.build_model()
             self.model.set_weights(model_weights)
