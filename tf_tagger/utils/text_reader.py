@@ -12,7 +12,7 @@ def text_reader(path: str) -> Tuple[list, list]:
     New B-City
     York I-City
     """
-    with open(path, 'r') as fobj:
+    with open(path, 'r', encoding='utf-8') as fobj:
         parts = fobj.read().split('\n\n')
         parts = [part.strip() for part in parts]
         parts = [part for part in parts if len(part) > 0]

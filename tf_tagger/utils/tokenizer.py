@@ -25,7 +25,7 @@ class Tokenizer:
             self.vocab_size = len(self.word_index)
         elif isinstance(vocab_file, str):
             self.word_index = {}
-            with open(vocab_file, 'r') as fp:
+            with open(vocab_file, 'r', encoding='utf-8') as fp:
                 i = 0
                 for line in fp:
                     if line.endswith('\n'):

@@ -14,7 +14,7 @@ from setuptools import setup, find_packages
 ON_RTD = os.environ.get('READTHEDOCS') == 'True'
 if not ON_RTD:
     INSTALL_REQUIRES = [
-        'tensorflow-gpu', 'tqdm', 'scikit-learn', 'numpy', 'scipy'
+        'tensorflow-gpu', 'tqdm', 'scikit-learn', 'numpy', 'scipy', 'appdirs', 'bert-for-tf2'
     ]
 else:
     INSTALL_REQUIRES = []

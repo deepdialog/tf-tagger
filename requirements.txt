@@ -22,3 +22,4 @@ tqdm==4.36.1
 Werkzeug==0.16.0
 wrapt==1.11.2
 appdirs==1.4.3
+bert-for-tf2==0.7.2
