@@ -5,14 +5,13 @@ import pickle
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-from tqdm import tqdm
 from bert import params_from_pretrained_ckpt
-
 from tf_tagger.models.tagger_model import TaggerModel
 from tf_tagger.utils.char_tokenizer import CharTokenizer
 from tf_tagger.utils.extract_entities import extract_entities
 from tf_tagger.utils.label import Label
 from tf_tagger.utils.tokenizer import Tokenizer
+from tqdm import tqdm
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -162,7 +161,8 @@ class TFTagger:
 
         if self.learning_rate is not None:
             if self.optimizer.lower() == 'sgd':
-                optimizer = tf.keras.optimizers.SGD(self.learning_rate, momentum=0.9)
+                optimizer = tf.keras.optimizers.SGD(self.learning_rate,
+                                                    momentum=0.9)
             elif self.optimizer.lower() == 'nadam':
                 optimizer = tf.keras.optimizers.Nadam(self.learning_rate)
             elif self.optimizer.lower() == 'rmsprop':

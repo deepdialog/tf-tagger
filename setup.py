@@ -11,16 +11,19 @@
 import os
 from setuptools import setup, find_packages
 
+current_dir = os.path.realpath(os.path.dirname(__file__))
+
 ON_RTD = os.environ.get('READTHEDOCS') == 'True'
 if not ON_RTD:
-    INSTALL_REQUIRES = [
-        'tensorflow-gpu', 'tqdm', 'scikit-learn', 'numpy', 'scipy', 'appdirs', 'bert-for-tf2'
-    ]
+    INSTALL_REQUIRES = open(os.path.join(
+        current_dir,
+        'requirements.txt'
+    )).read().split('\n')
 else:
     INSTALL_REQUIRES = []
 
 VERSION = os.path.join(
-    os.path.realpath(os.path.dirname(__file__)),
+    current_dir,
     'tf_tagger',
     'version.txt'
 )
