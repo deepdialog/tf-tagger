@@ -4,7 +4,7 @@ import os
 import numpy as np
 import tensorflow as tf
 
-from .label import PAD, SOS, EOS, UNK
+from .label import PAD, UNK, SOS, EOS
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 

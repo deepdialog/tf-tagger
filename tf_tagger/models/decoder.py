@@ -12,13 +12,20 @@ class Decoder(tf.keras.Model):
     def __init__(self, tag_size):
         super(Decoder, self).__init__(self)
         self.tag_size = tag_size
-        initializer = tf.keras.initializers.GlorotUniform()
+        initializer = tf.keras.initializers.glorot_uniform()
         self.transition_params = tf.Variable(
             initial_value=initializer(
                 shape=(tag_size, tag_size),
                 dtype=tf.dtypes.float32),
             name='crf/transition_params'
         )
+
+    def build(self, input_shape):
+        self.built = True
+
+    def compute_output_shape(self, input_shape):
+        batch_size, lengths, hidden_size = input_shape
+        return tf.TensorShape([batch_size, lengths])
 
     def call(self, inputs, lengths):
         """

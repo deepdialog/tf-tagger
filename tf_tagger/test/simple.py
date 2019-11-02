@@ -17,9 +17,7 @@ def test():
          ['Bdate', 'Idate', 'O', 'O', 'O', 'O'],
          ['Bdate', 'Idate', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']]
 
-    # from torch_tagger import Tagger
-    # it = Tagger(epochs=100, batch_size=4)
-    it.fit(x, y, x, y)
+    it.fit(x, y, x, y, epoch=1)
     pred = it.predict(x)
     print(pred)
     for i in range(len(x)):

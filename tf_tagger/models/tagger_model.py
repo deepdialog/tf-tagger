@@ -9,7 +9,6 @@ from .embed import Embed
 from .encoder import Encoder
 from .decoder import Decoder
 from .encoder_bert import EncoderBert
-from .char_cnn import CharCNN
 from .decoder_softmax import DecoderSoftmax
 
 class TaggerModel(tf.keras.Model):
@@ -21,24 +20,18 @@ class TaggerModel(tf.keras.Model):
                  dropout,
                  layer_size,
                  bidirectional,
-                 use_char=False,
-                 char_vocab_size=None,
-                 char_embedding_size=None,
-                 max_word_length=None,
-                 char_hidden_size=None,
-                 embedding_weights=None,
-                 embedding_trainable=True,
-                 bert=False,
-                 bert_model_dir=None,
-                 bert_max_length=4096,
-                 bert_params=None,
-                 bert_num_layers=None,
-                 bert_trainable=False):
+                 embedding_weights,
+                 embedding_trainable,
+                 recurrent_dropout,
+                 bert,
+                 bert_model_dir,
+                 bert_max_length,
+                 bert_params,
+                 bert_num_layers,
+                 bert_trainable,
+                 loss):
         super(TaggerModel, self).__init__(self)
-        self.char_emb = None
-        if use_char:
-            self.char_emb = Embed(char_embedding_size, char_vocab_size)
-            self.char_encoder = CharCNN(max_word_length, char_embedding_size, char_hidden_size)
+        self.dropout = dropout
         self.bert = bert
         if bert:
             self.emb = EncoderBert(
@@ -56,49 +49,49 @@ class TaggerModel(tf.keras.Model):
                 trainable=embedding_trainable
             )
         self.en = Encoder(
-            embedding_size=embedding_size + char_hidden_size if use_char else embedding_size,
+            embedding_size=embedding_size,
             hidden_size=hidden_size,
             layer_size=layer_size,
-            bidirectional=bidirectional
+            bidirectional=bidirectional,
+            recurrent_dropout=recurrent_dropout
         )
         self.project = tf.keras.models.Sequential([
-            # tf.keras.layers.Dense(hidden_size, activation='tanh'),
             tf.keras.layers.Dense(tag_size)
         ])
-        self.project.build(input_shape=(None, hidden_size))
-        self.de = Decoder(tag_size=tag_size)
-        # self.de = DecoderSoftmax(tag_size=tag_size)
-        # self.dropout = tf.keras.layers.Dropout(
-        #     dropout, noise_shape=None, seed=None)
-        self.dropout = dropout
+        if loss == 'crf':
+            self.de = Decoder(tag_size=tag_size)
+        elif loss == 'softmax':
+            self.de = DecoderSoftmax(tag_size=tag_size)
 
-    def logits(self, inputs, training=False, char_inputs=None):
+    def build(self, input_shape):
+        self.emb.build(input_shape)
+        input_shape = self.emb.compute_output_shape(input_shape)
+        self.en.build(input_shape)
+        input_shape = self.en.compute_output_shape(input_shape)
+        self.project.build(input_shape)
+        input_shape = self.project.compute_output_shape(input_shape)
+        self.de.build(input_shape)
+        self.built = True
+
+    def logits(self, inputs, training=False):
         lengths = tf.reduce_sum(tf.cast(tf.math.greater(inputs, 0), tf.int32), axis=-1)
         mask = tf.greater(inputs, 0)
         x = inputs
         x = self.emb(x)
-        if self.char_emb is not None:
-            xc = char_inputs
-            xc = self.char_emb(xc)
-            if training:
-                xc = tf.nn.dropout(xc, rate=self.dropout)
-            xc = self.char_encoder(xc)
-            x = tf.concat([x, xc], axis=-1)
-
         if training:
             x = tf.nn.dropout(x, rate=self.dropout)
-        x = self.en(x, mask)
+        x = self.en(x)
         if training:
             x = tf.nn.dropout(x, rate=self.dropout)
         x = self.project(x)
         return x, lengths
 
-    def call(self, inputs, char_inputs=None):
-        logits, lengths = self.logits(inputs, char_inputs=char_inputs)
+    def call(self, inputs):
+        logits, lengths = self.logits(inputs)
         return self.de(logits, lengths)
 
-    def compute_loss(self, inputs, tags, char_inputs=None):
-        logits, lengths = self.logits(inputs, training=True, char_inputs=char_inputs)
+    def compute_loss(self, inputs, tags):
+        logits, lengths = self.logits(inputs, training=True)
         return self.de.compute_loss(logits, lengths, tags)
 
 

@@ -8,9 +8,9 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 
 PAD = '[PAD]'
+UNK = '[UNK]'
 SOS = '[CLS]'
 EOS = '[SEP]'
-UNK = '[UNK]'
 
 
 class Label:

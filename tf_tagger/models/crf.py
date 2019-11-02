@@ -188,7 +188,7 @@ def crf_log_likelihood(inputs,
 
     # Get the transition matrix if not provided.
     if transition_params is None:
-        initializer = tf.keras.initializers.GlorotUniform()
+        initializer = tf.keras.initializers.glorot_uniform()
         transition_params = tf.Variable(
             initializer([num_tags, num_tags]), "transitions")
 

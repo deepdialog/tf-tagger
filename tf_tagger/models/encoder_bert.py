@@ -11,7 +11,7 @@ from bert import load_stock_weights
 
 class EncoderBert(tf.keras.Model):
 
-    def __init__(self, model_dir=None, max_length=1024, bert_params=None, num_layers=None, trainable=False):
+    def __init__(self, model_dir, max_length, bert_params, num_layers, trainable):
         super(EncoderBert, self).__init__(self)
 
         assert isinstance(max_length, int)
@@ -33,7 +33,16 @@ class EncoderBert(tf.keras.Model):
         output = l_bert(l_input_ids)
         model = tf.keras.Model(inputs=l_input_ids, outputs=output)
         model.build(input_shape=(None, max_length))
-        l_bert.embeddings_layer.trainable = trainable # True for unfreezing emb LayerNorm
+
+        def flatten_layers(root_layer):
+            if isinstance(root_layer, tf.keras.layers.Layer):
+                yield root_layer
+            for layer in root_layer._layers:
+                for sub_layer in flatten_layers(layer):
+                    yield sub_layer
+        if not trainable:
+            for layer in flatten_layers(l_bert):
+                layer.trainable = False
         
         self.model = model
 
