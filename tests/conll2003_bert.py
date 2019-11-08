@@ -2,8 +2,8 @@
 import os
 import pickle
 from appdirs import user_cache_dir
-from ..tf_tagger import TFTagger
-from ..utils.text_reader import text_reader
+from tf_tagger import TFTagger
+from tf_tagger.utils.text_reader import text_reader
 from .get_conll2003 import main as get_conll2003
 
 
